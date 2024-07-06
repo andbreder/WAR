@@ -20,18 +20,61 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("WAR Board Game website loaded successfully.");
-
   window.onscroll = function () {
-    var el = document.getElementsByClassName("button_centralizer")[0];
-
-    if (window.scrollY == 0) {
-      el.classList.remove("off");
-      document.getElementById('btn_right').innerHTML ='COMESSA'
-    } else {
-      el.classList.add("off");
-      document.getElementById('btn_right').innerHTML ='X'
-    }
+    document.getElementById(
+      "scroller"
+    ).innerHTML = `window: '${window.innerWidth} x ${window.innerHeight}' > (X: ${window.scrollX}, Y: ${window.scrollY})`;
   };
+  console.log(window);
+
+  const controller = document.getElementById("controller");
+  if (controller) {
+    // controller.addEventListener("click", function (e) {
+    //   // console.log(e);
+    //   // e.clientY;
+    // });
+
+    let ctrlClicked = false,
+      ctrlClickHolded = false;
+    let ctrlMouseDownLocation = { x: 0, y: 0 };
+
+    let ctrlClickHoldedTimer;
+
+    controller.addEventListener("mousedown", (e) => {
+      ctrlClicked = true;
+      ctrlMouseDownLocation = { x: e.clientX, y: e.clientY };
+      ctrlClickHoldedTimer = setTimeout(() => {
+        ctrlClickHolded = true;
+      }, 300);
+    });
+
+    controller.addEventListener("mouseup", (e) => {
+      clearTimeout(ctrlClickHoldedTimer);
+      if (ctrlClicked) {
+        ctrlClicked = false;
+        if (ctrlClickHolded) {
+          ctrlClickHolded = false;
+          let draggedX =
+            Math.abs(ctrlMouseDownLocation.x - e.clientX) >
+            window.innerWidth / 2;
+          let draggedY =
+            Math.abs(ctrlMouseDownLocation.y - e.clientY) >
+            window.innerHeight / 5;
+          if (draggedX && draggedY) {
+            console.log("LIMPOU A TELA!");
+          } else if (draggedX) {
+            console.log("TEM NADA PRO LADO");
+          } else if (draggedY) {
+            console.log("TU QUERIA MINIMIZAR? É iPHONE?");
+          } else {
+            console.log("SEGUROU");
+          }
+        } else {
+          console.log("CLICOU QUE NEM GENTE");
+        }
+      }
+    });
+  }
 });
 
 function scrollMeTo(id) {
