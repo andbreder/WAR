@@ -6,13 +6,13 @@
     <title>WAR Board Game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
       rel="stylesheet" />
-
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -24,30 +24,50 @@
       <p class="line_5">vai deitar na tua cama!</p>
       <p class="line_6">preguiça, te orienta!</p>
     </div>
-    <div id="controller" class="portrait">
-      <div class="md-ripples ripples-light"></div>
-    </div>
-    
-    <p id="scroller" style="
-      background-color: black; 
-      padding: 1em; 
-      position: fixed; 
-      text-align: center; 
-      top: 0; z-index: 999999;">zero</p>
+    <!-- <div id="controller" class="portrait">
+      <div class="md-ripples"></div>
+    </div> -->
+
+    <p
+      id="scroller"
+      style="
+        background-color: black;
+        padding: 1em;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        z-index: 999999;
+      ">
+      zero
+    </p>
 
     <header class="portrait">
-      <div class="game_title">
-        <div class="sliced_text">
-          <div class="top">WAR</div>
-          <div class="bot" aria-hidden="true">WAR</div>
-        </div>
-        <p>
-          Board Game
-        </p>
+      <div aria-label="Manual de Instruções Brédêr avélicas" class="preamble">
+        <p>Manual de Instruções</p>
+        <p>Breder<small>'</small>avélicas</p>
       </div>
-      <div class="paragraph-panzer">
-        <div class="line"></div>
-        <img src="./assets/panzer2.gif" alt="panzer" />
+      <article>
+        <h1>
+          WAR
+          <span>WAR</span>
+          <span>WAR</span>
+          <span>WAR</span>
+          <div class="paragraph-panzer">
+            <img src="./assets/panzer2.gif" alt="panzer" />
+          </div>
+        </h1>
+        <p>Board Game</p>
+        <!-- <hr /> -->
+      </article>
+      <div class="verde">
+        <h3>
+          para aprender a jogar,
+          <b style="color: #ffd600">leia-me!</b>
+        </h3>
+        <p>arraste para cima a página e busque os temas</p>
+        <small style="opacity: 0.5">
+          ou não leia... e, no jogo, vá você de arrasta 🤷
+        </small>
       </div>
     </header>
     <main id="id-main" class="portrait">

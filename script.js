@@ -1,35 +1,25 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//   console.log('WAR Board Game website loaded successfully.');
-
-//   // window.onscroll = function() {
-//   // }
-//   var htmlHeader = document.getElementsByTagName('header')[0];
-//   console.log(htmlHeader)
-
-//   var parallax = htmlHeader.getElementsByClassName("parallax")[0];
-//   console.log(parallax)
-//   var mainTitle = htmlHeader.getElementsByClassName("main_title")[0];
-//   console.log(mainTitle)
-
-//   parallax.addEventListener('scroll', function() {
-//     console.log('parallax---scroll :: ' + parallax.scrollTop)
-//     mainTitle.style.boxShadow = `inset 0vh 0vh 10vh ${parallax.scrollTop}vh rgba(18, 26, 45, 1)`;
-//   });
-
-// });
-
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("WAR Board Game website loaded successfully.");
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('WAR Board Game website loaded successfully.');
   window.onscroll = function () {
     document.getElementById(
-      "scroller"
+      'scroller'
     ).innerHTML = `window: '${window.innerWidth} x ${window.innerHeight}' > (X: ${window.scrollX}, Y: ${window.scrollY})`;
   };
   console.log(window);
 
-  const controller = document.getElementById("controller");
+  const preamble = document.getElementsByClassName('preamble')[0];
+  if (preamble) {
+    preamble.addEventListener('click', (e) => {
+      var synth = window.speechSynthesis;
+      var utterance = new SpeechSynthesisUtterance(preamble.ariaLabel);
+      utterance.lang = 'pt-BR';
+      synth.speak(utterance);
+    });
+  }
+
+  const controller = document.getElementById('controller');
   if (controller) {
-    // controller.addEventListener("click", function (e) {
+    // controller.addEventListener('click', function (e) {
     //   // console.log(e);
     //   // e.clientY;
     // });
@@ -40,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let ctrlClickHoldedTimer;
 
-    controller.addEventListener("mousedown", (e) => {
+    controller.addEventListener('mousedown', (e) => {
       ctrlClicked = true;
       ctrlMouseDownLocation = { x: e.clientX, y: e.clientY };
       ctrlClickHoldedTimer = setTimeout(() => {
@@ -48,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     });
 
-    controller.addEventListener("mouseup", (e) => {
+    controller.addEventListener('mouseup', (e) => {
       clearTimeout(ctrlClickHoldedTimer);
       if (ctrlClicked) {
         ctrlClicked = false;
@@ -61,16 +51,16 @@ document.addEventListener("DOMContentLoaded", function () {
             Math.abs(ctrlMouseDownLocation.y - e.clientY) >
             window.innerHeight / 5;
           if (draggedX && draggedY) {
-            console.log("LIMPOU A TELA!");
+            console.log('LIMPOU A TELA!');
           } else if (draggedX) {
-            console.log("TEM NADA PRO LADO");
+            console.log('TEM NADA PRO LADO');
           } else if (draggedY) {
-            console.log("TU QUERIA MINIMIZAR? É iPHONE?");
+            console.log('TU QUERIA MINIMIZAR? É iPHONE?');
           } else {
-            console.log("SEGUROU");
+            console.log('SEGUROU');
           }
         } else {
-          console.log("CLICOU QUE NEM GENTE");
+          console.log('CLICOU QUE NEM GENTE');
         }
       }
     });
@@ -78,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function scrollMeTo(id) {
-  console.log("scrollMeTo :: " + id);
+  console.log('scrollMeTo :: ' + id);
 
   var element = document.getElementById(id);
 
@@ -87,6 +77,6 @@ function scrollMeTo(id) {
   if (element != null)
     window.scroll({
       top: element.getBoundingClientRect().top + window.scrollY,
-      behavior: "smooth"
+      behavior: 'smooth'
     });
 }
