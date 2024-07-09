@@ -3,18 +3,29 @@
   --z_index_main: 2000;
   --z_index_footer: 3000;
 
-  --panzer-height: min(12vw, 12vh);
+  --panzer-height: 0.25em;
 
   --font-family-default: "Roboto Mono", monospace;
+  --font-family-hand: "Permanent Marker", cursive;
   --font-family-stylish: "Rubik Mono One", monospace;
+  
+  --font-size-default: 3vw;
+  --font-size-title: 6vw;
+  --font-size-subtitle: 4.5vw;
 
   --default-background-color: #121a2d;
-  
-  --color-blue-darker: #0036C6;
-  --color-blue-dark: #0046FF;
-  --color-blue-flat: #2979FF;
-  --color-blue-light: #5584FF;
-  --color-blue-lighter: #D2DFFF;
+
+  --color-blue-darker: #0036c6;
+  --color-blue-dark: #0046ff;
+  --color-blue-flat: #2979ff;
+  --color-blue-light: #5584ff;
+  --color-blue-lighter: #d2dfff;
+}
+
+/* https://gabrielfins.github.io/ripple-effect/ */
+.md-ripples .ripple {
+  background-color: #fff9;
+  opacity: 0.01;
 }
 
 html {
@@ -22,10 +33,12 @@ html {
   color: #fff;
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-size: var(--font-size-default);
   font-style: normal;
+  font-weight: 400;
   max-width: 100vw !important;
   overflow-x: hidden;
+  text-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
   width: 100vw !important;
 }
 
@@ -46,7 +59,7 @@ html {
   }
 
   .landscape {
-    padding-top: 25vh
+    padding-top: 25vh;
   }
 
   .landscape > p {
@@ -128,98 +141,141 @@ html {
     flex-direction: inherit;
     height: 100vh;
     z-index: var(--z_index_header);
-    text-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
   }
   main {
     background-color: blueviolet;
     z-index: var(--z_index_main);
-    text-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
   }
   footer {
     background-color: crimson;
     z-index: var(--z_index_footer);
-    text-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
   }
 
-  header > .anim-bg {
-    position: absolute;
-    top: 0;
+  .preamble {
+    font-size: var(--font-size-subtitle);
     left: 0;
+    position: absolute;
     right: 0;
-    bottom: 0;
+    text-align: center;
+    top: calc(45% - calc(100vw / 3));
+    z-index: 999999999;
+  }
+  .preamble * {
+    margin: 0;
+  }
+  .preamble > p:last-child {
 
-    display: flex;
+    background: #fff;
+    background: linear-gradient(172deg, #fff 50%, #FF3D00 70%);
+    font-family: var(--font-family-hand);
+    font-size: 1.85rem !important;
+    font-weight: bold;
+    letter-spacing: 0.25em;
+    text-shadow: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .verde {
+    bottom: 5%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    border-radius: 0.5em;
+    text-align: center;
+  }
+  .verde * {
+    margin: 0;
+  }
+
+  header > article {
     align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-  }
-
-  header > .game_title {
-    display: inherit;
-    flex: 1;
-    flex-direction: inherit;
-    justify-content: center;
-  }
-  header > .game_title > .sliced_text {
-    --font-h: 35vh;
-    --font-w: 35vw;
-    background-color: var(--background-color);
+    text-shadow: none;
+    display: flex;
+    flex-direction: column;
     font-family: var(--font-family-stylish);
-    font-size: min(var(--font-w), var(--font-h));
-    height: min(43vw, var(--font-h));
-    position: relative;
-    text-shadow: none !important;
+    height: inherit;
+    justify-content: center;
+    text-align: center;
   }
-  header > .game_title > .sliced_text > .top,
-  header > .game_title > .sliced_text > .bot {
-    left: 0;
+  header > article > h1 {
+    --font-size: calc(100vw / 3);
+    font-size: var(--font-size);
+    line-height: var(--font-size);
+    margin: 0;
+    position: relative;
+    width: fit-content;
+  }
+  header > article > h1 > span {
     position: absolute;
-    right: 0;
-    text-align: center;
-  }
-  header > .game_title > .sliced_text > .top {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 47.5%, 0% 57.5%);
+    left: 0;
     top: 0;
-    z-index: calc(var(--z_index_header) + 500);
+    right: 0;
+    z-index: calc(var(--z_index_header) + 15);
   }
-  header > .game_title > .sliced_text > .bot {
-    clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
-    color: transparent;
+  header > article > h1,
+  header > article > h1 > span {
     background-color: var(--color-blue-flat);
-    background-clip: text;
-    bottom: 0;
-    z-index: calc(var(--z_index_header) + 499);
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
   }
-  header > .game_title > p {
-    color: var(--color-blue-lighter);
-    font-size: min(8vw, 8vh);
-    font-family: var(--font-family-stylish);
-    font-style: normal;
-    font-weight: 400;
-    margin: max(-8vw, -8vh) 0 0 0;
-    position: relative;
-    text-align: center;
-    word-spacing: -15pt;
-    z-index: calc(var(--z_index_header) + 501);
+  header > article > h1 > span:nth-of-type(1) {
+    --xyA: 0%;
+    --xyB: 10%;
+    --xyC: 100%;
+    --xyD: calc(var(--xyB) * 2.8);
+    clip-path: polygon(
+      var(--xyA) var(--xyA),
+      var(--xyD) var(--xyA),
+      var(--xyB) var(--xyC),
+      var(--xyA) var(--xyC)
+    );
+  }
+  header > article > h1 > span:nth-of-type(2) {
+    --xyA: 44%;
+    --xyB: 0%;
+    --xyC: calc(var(--xyA) * 1.3);
+    --xyE: 100%;
+    --xyF: calc(var(--xyA) * 1.6);
+    --xyG: calc(var(--xyA) * 0.7);
+    clip-path: polygon(
+      var(--xyA) var(--xyB),
+      var(--xyC) var(--xyB),
+      var(--xyF) var(--xyE),
+      var(--xyG) var(--xyE)
+    );
+  }
+  header > article > h1 > span:nth-of-type(3) {
+    --xyA: 84%;
+    --xyB: 0%;
+    --xyC: 100%;
+    clip-path: polygon(
+      var(--xyA) var(--xyB),
+      var(--xyC) var(--xyB),
+      var(--xyC) var(--xyC),
+      var(--xyA) var(--xyC)
+    );
+  }
+  header > article > h1 + p {
+    font-size: var(--font-size-title);
+    margin: -1rem;
+    letter-spacing: 0.25em;
+    word-spacing: -0.5em;
   }
 
-  header > .paragraph-panzer {
+  .paragraph-panzer {
+    --offset: 12%;
     height: var(--panzer-height);
     overflow: hidden;
-    position: relative;
-    width: 100vw;
-  }
-  header > .paragraph-panzer > .line {
-    background-color: #fff;
-    bottom: 0;
-    height: min(0.5vw, 0.5vh);
-    left: 0;
     position: absolute;
-    right: 0;
+    left: var(--offset);
+    bottom: 18%;
+    right: var(--offset);
   }
-  header > .paragraph-panzer > img {
-    animation: moveImage 5s linear infinite;
+  .paragraph-panzer > img {
+    animation: moveImage 20s cubic-bezier(0.4, 0.6, 0.4, 0.6) infinite;
     filter: brightness(100);
     height: calc(var(--panzer-height) * 3);
     position: absolute;
@@ -231,8 +287,7 @@ html {
       left: calc(var(--panzer-height) * -3);
     }
     100% {
-      left: calc(100vw + var(--panzer-height) * 3);
+      left: 100%;
     }
   }
-
 }
