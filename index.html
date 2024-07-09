@@ -6,13 +6,21 @@
     <title>WAR Board Game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
       rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="inputs.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -24,12 +32,12 @@
       <p class="line_5">vai deitar na tua cama!</p>
       <p class="line_6">preguiça, te orienta!</p>
     </div>
-    <!-- <div id="controller" class="portrait">
+    <div id="controller" class="portrait">
       <div class="md-ripples"></div>
-    </div> -->
-
+    </div>
     <p
       id="scroller"
+      class="portrait"
       style="
         background-color: black;
         padding: 1em;
@@ -40,40 +48,80 @@
       ">
       zero
     </p>
-
+    <button id="menu-chapters" type="button" class="portrait md-ripples">
+      <span class="material-symbols-sharp">format_list_numbered</span>
+    </button>
+    <div id="menu-chapters-containers" class="hide">
+      <div class="options">
+        <div class="option md-ripples">
+          Apresentações
+          <span class="material-symbols-sharp">read_more</span>
+        </div>
+        <div class="option md-ripples sub">Apresentações
+          <span class="material-symbols-sharp">read_more</span></div>
+        <div class="option md-ripples">Componentes do Jogo
+          <span class="material-symbols-sharp">read_more</span></div>
+        <div class="option md-ripples">Iniciando a Partida
+          <span class="material-symbols-sharp">read_more</span></div>
+        <div class="option md-ripples">Jogando Decentemente
+          <span class="material-symbols-sharp">read_more</span></div>
+        <div class="option md-ripples">Lei de Murphy
+          <span class="material-symbols-sharp">read_more</span></div>
+      </div>
+      <div>
+        <!-- https://codepen.io/maheshambure21/pen/EozKKy -->
+        <label for="searcher" style="margin-bottom: 5px">
+          Buscar texto no Manual
+        </label>
+        <div class="input-effect">
+          <input
+            id="searcher"
+            class="effect-9"
+            type="text"
+            placeholder="trocar cartas" />
+          <span class="focus-border">
+            <i></i>
+          </span>
+        </div>
+      </div>
+    </div>
     <header class="portrait">
-      <div aria-label="Manual de Instruções Brédêr avélicas" class="preamble">
+      <div aria-label="Manual de Instruções Bréder avélicas" class="preamble">
         <p>Manual de Instruções</p>
-        <p>Breder<small>'</small>avélicas</p>
+        <p class="named">
+          Breder
+          <small>'</small>
+          avélicas
+        </p>
+        <small>para jogar</small>
       </div>
       <article>
         <h1>
           WAR
-          <span>WAR</span>
-          <span>WAR</span>
-          <span>WAR</span>
+          <span class="no-print">WAR</span>
+          <span class="no-print">WAR</span>
+          <span class="no-print">WAR</span>
           <div class="paragraph-panzer">
             <img src="./assets/panzer2.gif" alt="panzer" />
           </div>
         </h1>
         <p>Board Game</p>
-        <!-- <hr /> -->
       </article>
-      <div class="verde">
+      <div class="post-alert">
         <h3>
           para aprender a jogar,
           <b style="color: #ffd600">leia-me!</b>
         </h3>
-        <p>arraste para cima a página e busque os temas</p>
-        <small style="opacity: 0.5">
+        <p class="no-print">arraste para cima a página e busque os temas</p>
+        <small class="no-print" style="opacity: 0.5">
           ou não leia... e, no jogo, vá você de arrasta 🤷
         </small>
       </div>
     </header>
     <main id="id-main" class="portrait">
-      <span>MAIN</span>
+      <hr />
       <div class="content">
-        <h3>On Scroll Sticky Header</h3>
+        <h3>1. On Scroll Sticky Header</h3>
         <p>
           The header will stick to the top when you reach its scroll position.
         </p>
