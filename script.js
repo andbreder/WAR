@@ -1,36 +1,64 @@
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('WAR Board Game website loaded successfully.');
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("WAR Board Game website loaded successfully.");
+
+  const divMenuChapters = document.getElementById("menu-chapters-containers");
+  const btnMenuChapters = document.getElementById("menu-chapters");
+  btnMenuChapters.style.transform = `scale(${btnMenuChaptersStateNum()})`;
+  btnMenuChapters.style.opacity = `${btnMenuChaptersStateNum()}`;
+  btnMenuChapters.addEventListener("click", (e) => {
+    if (btnMenuChaptersStateNum() < 1) {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+      });btnMenuChapters
+    } else {
+      console.log(btnMenuChapters.children)
+      divMenuChapters.classList.toggle("hide");
+      btnMenuChapters.children[0].innerHTML =
+        divMenuChapters.classList.contains("hide")
+          ? "format_list_numbered"
+          : "south_east";
+      document
+        .getElementsByTagName("html")[0]
+        .setAttribute(
+          "class",
+          divMenuChapters.classList.contains("hide") ? "" : "no-scroll"
+        );
+    }
+  });
+
+  function btnMenuChaptersStateNum() {
+    return Math.min(1, window.scrollY / window.innerHeight);
+  }
+
   window.onscroll = function () {
     document.getElementById(
-      'scroller'
+      "scroller"
     ).innerHTML = `window: '${window.innerWidth} x ${window.innerHeight}' > (X: ${window.scrollX}, Y: ${window.scrollY})`;
-  };
-  console.log(window);
 
-  const preamble = document.getElementsByClassName('preamble')[0];
+    btnMenuChapters.style.transform = `scale(${btnMenuChaptersStateNum()})`;
+    btnMenuChapters.style.opacity = `${btnMenuChaptersStateNum()}`;
+  };
+
+  const preamble = document.getElementsByClassName("preamble")[0];
   if (preamble) {
-    preamble.addEventListener('click', (e) => {
+    preamble.addEventListener("click", (e) => {
       var synth = window.speechSynthesis;
       var utterance = new SpeechSynthesisUtterance(preamble.ariaLabel);
-      utterance.lang = 'pt-BR';
+      utterance.lang = "pt-BR";
       synth.speak(utterance);
     });
   }
 
-  const controller = document.getElementById('controller');
+  const controller = document.getElementById("controller");
   if (controller) {
-    // controller.addEventListener('click', function (e) {
-    //   // console.log(e);
-    //   // e.clientY;
-    // });
-
-    let ctrlClicked = false,
-      ctrlClickHolded = false;
+    let ctrlClicked = false;
+    let ctrlClickHolded = false;
     let ctrlMouseDownLocation = { x: 0, y: 0 };
 
     let ctrlClickHoldedTimer;
 
-    controller.addEventListener('mousedown', (e) => {
+    controller.addEventListener("mousedown", (e) => {
       ctrlClicked = true;
       ctrlMouseDownLocation = { x: e.clientX, y: e.clientY };
       ctrlClickHoldedTimer = setTimeout(() => {
@@ -38,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 300);
     });
 
-    controller.addEventListener('mouseup', (e) => {
+    controller.addEventListener("mouseup", (e) => {
       clearTimeout(ctrlClickHoldedTimer);
       if (ctrlClicked) {
         ctrlClicked = false;
@@ -51,16 +79,16 @@ document.addEventListener('DOMContentLoaded', function () {
             Math.abs(ctrlMouseDownLocation.y - e.clientY) >
             window.innerHeight / 5;
           if (draggedX && draggedY) {
-            console.log('LIMPOU A TELA!');
+            console.log("LIMPOU A TELA!");
           } else if (draggedX) {
-            console.log('TEM NADA PRO LADO');
+            console.log("TEM NADA PRO LADO");
           } else if (draggedY) {
-            console.log('TU QUERIA MINIMIZAR? É iPHONE?');
+            console.log("TU QUERIA MINIMIZAR? É iPHONE?");
           } else {
-            console.log('SEGUROU');
+            console.log("SEGUROU");
           }
         } else {
-          console.log('CLICOU QUE NEM GENTE');
+          console.log("CLICOU QUE NEM GENTE");
         }
       }
     });
@@ -68,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function scrollMeTo(id) {
-  console.log('scrollMeTo :: ' + id);
+  console.log("scrollMeTo :: " + id);
 
   var element = document.getElementById(id);
 
@@ -77,6 +105,6 @@ function scrollMeTo(id) {
   if (element != null)
     window.scroll({
       top: element.getBoundingClientRect().top + window.scrollY,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
 }
