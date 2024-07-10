@@ -1,243 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WAR Board Game</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
-      rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WAR Board Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="inputs.css" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="landscape">
-      <p class="line_1">Deitado?</p>
-      <p class="line_2">aqui tio?</p>
-      <p class="line_3">só o tabuleiro!</p>
-      <p class="line_4">me arruma ai parça!</p>
-      <p class="line_5">vai deitar na tua cama!</p>
-      <p class="line_6">preguiça, te orienta!</p>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="inputs.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="landscape">
+    <p class="line_1">Deitado?</p>
+    <p class="line_2">aqui tio?</p>
+    <p class="line_3">só o tabuleiro!</p>
+    <p class="line_4">me arruma ai parça!</p>
+    <p class="line_5">vai deitar na tua cama!</p>
+    <p class="line_6">preguiça, te orienta!</p>
+  </div>
+  <button id="menu-chapters" type="button" class="portrait md-ripples">
+    <span class="material-symbols-sharp">format_list_numbered</span>
+  </button>
+  <div id="menu-chapters-containers" class="hide">
+    <div>
+      <!-- https://codepen.io/maheshambure21/pen/EozKKy -->
+      <label for="searcher" style="margin-bottom: 5px">
+        Buscar texto no Manual
+      </label>
+      <div class="input-effect">
+        <input id="searcher" class="effect-9" type="text" placeholder="trocar cartas" />
+        <span class="focus-border">
+          <i></i>
+        </span>
+      </div>
     </div>
-    <div id="controller" class="portrait">
-      <div class="md-ripples"></div>
+  </div>
+  <header class="portrait">
+    <div aria-label="Manual de Instruções Bréder avélicas" class="preamble">
+      <p>Manual de Instruções</p>
+      <p class="named">
+        Breder
+        <small>'</small>
+        avélicas
+      </p>
+      <small>para jogar</small>
     </div>
-    <p
-      id="scroller"
-      class="portrait"
-      style="
-        background-color: black;
-        padding: 1em;
-        position: fixed;
-        text-align: center;
-        top: 0;
-        z-index: 999999;
-      ">
-      zero
-    </p>
-    <button id="menu-chapters" type="button" class="portrait md-ripples">
-      <span class="material-symbols-sharp">format_list_numbered</span>
-    </button>
-    <div id="menu-chapters-containers" class="hide">
-      <div class="options">
-        <div class="option md-ripples">
-          Apresentações
-          <span class="material-symbols-sharp">read_more</span>
+    <article>
+      <h1>
+        WAR
+        <span class="no-print">WAR</span>
+        <span class="no-print">WAR</span>
+        <span class="no-print">WAR</span>
+        <div class="paragraph-panzer">
+          <img src="./assets/panzer2.gif" alt="panzer" />
         </div>
-        <div class="option md-ripples sub">Apresentações
-          <span class="material-symbols-sharp">read_more</span></div>
-        <div class="option md-ripples">Componentes do Jogo
-          <span class="material-symbols-sharp">read_more</span></div>
-        <div class="option md-ripples">Iniciando a Partida
-          <span class="material-symbols-sharp">read_more</span></div>
-        <div class="option md-ripples">Jogando Decentemente
-          <span class="material-symbols-sharp">read_more</span></div>
-        <div class="option md-ripples">Lei de Murphy
-          <span class="material-symbols-sharp">read_more</span></div>
-      </div>
-      <div>
-        <!-- https://codepen.io/maheshambure21/pen/EozKKy -->
-        <label for="searcher" style="margin-bottom: 5px">
-          Buscar texto no Manual
-        </label>
-        <div class="input-effect">
-          <input
-            id="searcher"
-            class="effect-9"
-            type="text"
-            placeholder="trocar cartas" />
-          <span class="focus-border">
-            <i></i>
-          </span>
-        </div>
-      </div>
+      </h1>
+      <p>Board Game</p>
+    </article>
+    <div class="post-alert">
+      <h3>
+        para aprender a jogar,
+        <b style="color: var(--color_yellow)">leia-me!</b>
+      </h3>
+      <p class="no-print">arraste para cima a página e busque os temas</p>
+      <small class="no-print" style="opacity: 0.5">
+        ou não leia... e, no jogo, vá você de arrasta 🤷
+      </small>
     </div>
-    <header class="portrait">
-      <div aria-label="Manual de Instruções Bréder avélicas" class="preamble">
-        <p>Manual de Instruções</p>
-        <p class="named">
-          Breder
-          <small>'</small>
-          avélicas
-        </p>
-        <small>para jogar</small>
-      </div>
-      <article>
-        <h1>
-          WAR
-          <span class="no-print">WAR</span>
-          <span class="no-print">WAR</span>
-          <span class="no-print">WAR</span>
-          <div class="paragraph-panzer">
-            <img src="./assets/panzer2.gif" alt="panzer" />
-          </div>
-        </h1>
-        <p>Board Game</p>
-      </article>
-      <div class="post-alert">
-        <h3>
-          para aprender a jogar,
-          <b style="color: #ffd600">leia-me!</b>
-        </h3>
-        <p class="no-print">arraste para cima a página e busque os temas</p>
-        <small class="no-print" style="opacity: 0.5">
-          ou não leia... e, no jogo, vá você de arrasta 🤷
-        </small>
-      </div>
-    </header>
-    <main id="id-main" class="portrait">
+  </header>
+  <hr />
+  <main id="id-main" class="portrait">
+    <section>
+      <h1 class="title">Apresentações</h1>
       <hr />
-      <div class="content">
-        <h3>1. On Scroll Sticky Header</h3>
-        <p>
-          The header will stick to the top when you reach its scroll position.
-        </p>
-        <p>Scroll back up to remove the sticky effect.</p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
-        <p>
-          Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum
-          definitiones no quo, maluisset concludaturque et eum, altera fabulas
-          ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
-          Affert laboramus repudiandae nec et. Inciderint efficiantur his ad.
-          Eum no molestiae voluptatibus.
-        </p>
+      <p>
+        Olá, Bem-Vindo ao <b>WAR</b>! Esse jogo de tabuleiro incrível <span class="comment">e, provavelmente mais velho que você!</span>
+      </p>
+      <p>
+        Neste <b>Manual de Instruções Breder'avélicas</b> você vai encontrar todas as descrições e explicações de que precisa para jogar comigo!
+      </p>
+      <p class="alert alert-red text-center">
+        <b>ESTE MANUAL É UMA REINTERPRETAÇÃO DO MANUAL ORIGNAL DO JOGO DE TABULEIRO WAR DA GROW</b>
+      </p>
+      <p>
+        As modificações são simples e gerais que auxiliam os jogadores a tomarem de decisão, resolver conflitos e, principalmente, aceleram o jogo! Se você conhece as regras orignais, não se preocupe, as diferenças estarão claramente explicadas <span class="comment">e se não estiverem ... reclame pro Breder, aquele paspalho que me escreveu!</span>
+      </p>
+      <h1 class="title sub">Narrador</h1>
+      <hr />
+      <p>
+        Aqui eu sou seu <b class="chat">NARRADOR</b> e quando estiver falando diretamente com você leitor, dando dicas ou te "elogiando" vou destacar o texto da seguinte forma:
+      </p>
+      <p class="chat text-center">aqui sou eu falando, entendeu?</p>
+      <p>
+        Em outras situações, mais sutilmente, vou deixar comentários e citações talvez ácidas, ou engraçadas, ou ironicas da seguinte forma:
+      </p>
+      <p class="comment text-center">você quer ganhar ou atrapalhar os outros?</p>
+      <h1 class="title sub">Nomenclaturas</h1>
+      <hr />
+      <p>
+        Eu, o <b class="chat">NARRADOR</b> aqui, vou me referir e dirigir a você e outros jogadores de várias formas e nomes diferenciados, elogiar, chamar atenção, criticar<span class="comment"> e talvez até humilhar um pouco</span> mas lembre que é tudo brincadeira! Estejam livres para brincar assim também durante a partida
+      </p>
+      <p>
+        Então, para você e outros os jogadores, os nomes podem ser diversos como: <b>JOGADOR, CAPITÃO, MULA, GÊNIO, GENERAL, HORROROSO, COMANDANTE, EINSTEIN, INÚTIL, DITADOR, ANIMAL</b> . . .
+      </p>
+      <p>
+        Já para para o conjunto de jogadores, quando tratados como "aliados", podemos chamá-los: <b>ALIADOS, VIZINHOS, ONU, COALIZÃO</b> . . .
+      </p>
+      <p>
+        Por fim, qualquer outra nomenclatura por aqui depende apenas do seu vocabulário, de conhecimento em geografia, história. <span class="chat">utilize a pesquisa no menu para buscar a refência inicial das palavras, eu explico a maioria delas na primeira vez que aparecem.</span>
+      </p>
+    </section>
+    <section>
+      <h1 class="title">Componentes do Jogo</h1>
+      <hr />
+      <p>
+        As descrições a seguir são dos <b>objetos que existem no jogo e que você precisa para jogar</b>, suas quantidades, cores, formatos, etc.
+      </p>
+      <h1 class="title sub">Mapa</h1>
+      <hr />
+      <p>
+        O <b>MAPA</b> ou <b>TABULEIRO</b>, é objeto delimitador das interações entre os jogadores. <span class="comment">O quê acontece no jogo, fica no jogo! é tudo brincadeira, não guarde rancor do coleguinha, inclusive pelas traições (sim, no plural...).</span>
+      </p>
+      <div class="image-container">
+        <img alt="mapa do jogo" id="war-map" class="map" src="./assets/war-map.jpg">
+        <label for="war-map"><small class="comment">e.g:</small> mapa do jogo</label>
       </div>
-    </main>
-    <footer class="portrait">
-      <span>FOOTER</span>
-      <!-- <p>&copy; 2024 WAR Board Game</p> -->
-    </footer>
-    <script src="script.js"></script>
-    <script src="ripples.js"></script>
-  </body>
+      <p>
+        O <b>MAPA</b> é uma clara referencia ao PLANISFÉRIO/MAPA-MÚNDI, mas não é nem um pouco exato! <span class="chat">Sim, não tem Antártica!</span>
+      </p>
+      <h1 class="title sub">Continentes</h1>
+      <hr />
+      <p>
+        <span class="comment">Não aula de geografia mas</span> São as grandes areas no mapa, destacadas em CORES ESPECÍFICAS:
+      </p>
+      <p>
+        Ao norte<span class="comment">(em cima)</span> do mapa, no oeste<span class="comment">(esquerda)</span>, a <span class="continent-america-norte">AMÉRICA DO NORTE</span>; logo abaixo, como diz o nome <span class="comment">e verde porque só tem mato</span> a <span class="continent-america-sul">AMÉRICA DO SUL</span>; a direita dela, no centro do mundo a <span class="continent-africa">ÁFRICA</span>; acima dela <span class="comment">e azul porque é frio pra cacete</span> a
+        <span class="continent-europa">EUROPA</span>; a <span class="continent-asia">ÁSIA</span>, ao norte do mapa, no leste <span class="comment">esse deserto gigante e amarelo de pura ironia</span>; logo abaixo dela <span class="comment">na berola do mapa</span>, em fim a <span class="continent-oceania">OCEANIA</span>.
+      </p>
+      <div class="image-container">
+        <span class="continent-africa">ÁFRICA</span>
+        <span class="continent-america-norte">AMÉRICA DO NORTE</span>
+        <span class="continent-america-sul">AMÉRICA DO SUL</span>
+        <span class="continent-asia">ÁSIA</span>
+        <span class="continent-europa">EUROPA</span>
+        <span class="continent-oceania">OCEANIA</span>
+        <img alt="continentes" id="war-continents" class="map" src="./assets/war-map.jpg">
+        <label for="war-continents"><small class="comment">e.g:</small> continentes</label>
+      </div>
+      <h1 class="title sub">Territórios</h1>
+      <hr />
+      <p>
+        Os TERRITÓRIOS estão contidos dentro dos continentes, tendo seu nome de identificação em seu interior e sendo delimitados entre sí por suas fronteiras. <span class="comment">Não procure um país, isso é um jogo!</span>
+      </p>
+      <p class="text-center">
+        <span class="chat">O mapa do jogo NÃO tem países, tem territórios!</span>
+      </p>
+      <p class="territory-num territory-africa">
+        06 territórios - <span class="continent-africa">ÁFRICA</span>
+      </p>
+      <p class="territory">
+        ÁFRICA DO SUL, ARGÉLIA, CONGO, EGITO, MADAGASCAR, SUDÃO
+      </p>
+      <p class="territory-num territory-america-norte">
+        09 territórios - <span class="continent-america-norte">AMÉRICA DO NORTE</span>
+      </p>
+      <p class="territory">
+        ALASCA, CALIFÓRNIA, GROELÂNDIA, LABRADOR, MACKENZIE, MÉXICO, NOVA YORK, OTTAWA, VANCOUVER
+      </p>
+      <p class="territory-num territory-america-sul">
+        04 territórios - <span class="continent-america-sul">AMÉRICA DO SUL</span>
+      </p>
+      <p class="territory">
+        ARGENTINA, BRASIL, PERU, VENEZUELA
+      </p>
+      <p class="territory-num territory-asia">
+        12 territórios - <span class="continent-asia">ÁSIA</span>
+      </p>
+      <p class="territory">
+        ARAL, CHINA, DUDINKA, ÍNDIA, JAPÃO, MONGÓLIA, OMSK, ORIENTE MÉDIO, SIBÉRIA, TCHITA, VIETNÃ, VLADVOSTOK
+      </p>
+      <p class="territory-num territory-europa">
+        07 territórios - <span class="continent-europa">EUROPA</span>
+      </p>
+      <p class="territory">
+        ALEMANHA, INGLATERRA, INSLÂNDIA, FRANÇA, MOSCOU, POLÔNIA, SUÉCIA
+      </p>
+      <p class="territory-num territory-oceania">
+        04 territórios - <span class="continent-oceania">OCEANIA</span>
+      </p>
+      <p class="territory">
+        AUSTRÁLIA, BORNÉU, NOVA GUINÉ, SUMATRA
+      </p>
+
+    </section>
+    <section>
+      <h1 class="title">NADA</h1>
+      <hr />
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+      <p>aaaaaaaaaaaaa</p>
+    </section>
+  </main>
+  <footer class="portrait">
+    <span>FOOTER</span>
+    <!-- <p>&copy; 2024 WAR Board Game</p> -->
+  </footer>
+  <script src="script.js"></script>
+  <script src="ripples.js"></script>
+</body>
+
 </html>
