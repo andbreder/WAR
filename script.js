@@ -1,8 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("WAR Board Game website loaded successfully.");
-
   const divMenuChapters = document.getElementById("menu-chapters-containers");
   const btnMenuChapters = document.getElementById("menu-chapters");
+
+  ///
+  /// carrega opcoes no menu
+  ///
+
+  let titles = document
+    .getElementById("id-main")
+    .getElementsByClassName("title");
+  if (titles) {
+    var options = document.createElement("div");
+    options.classList.add("options");
+    divMenuChapters.prepend(options);
+
+    let titleIndex = 0;
+    let subtitleIndex = 0;
+
+    for (let i = 0; i < titles.length; i++) {
+      const title = titles[i];
+
+      if (title.classList.contains("sub")) {
+        ++subtitleIndex;
+      } else {
+        ++titleIndex;
+        subtitleIndex = 0;
+      }
+
+      var option = document.createElement("div");
+      option.classList.add("option", "md-ripples");
+      if (title.classList.contains("sub")) option.classList.add("sub");
+
+      let prefixNum = `${titleIndex}.${subtitleIndex > 0 ? subtitleIndex + "." : ""
+        }`;
+      option.innerText = `${prefixNum} ${title.innerText}`;
+      title.innerText = `${prefixNum} ${title.innerText}`;
+
+      var icon = document.createElement("span");
+      icon.classList = "material-symbols-sharp";
+      icon.innerText = "read_more";
+      option.append(icon);
+
+      options.append(option);
+
+      option.addEventListener("click", (e) => {
+        window.scrollTo({
+          top: title.getBoundingClientRect().top + window.scrollY,
+          behavior: "smooth"
+        });
+        btnMenuChapters.click();
+      });
+    }
+  }
+
   btnMenuChapters.style.transform = `scale(${btnMenuChaptersStateNum()})`;
   btnMenuChapters.style.opacity = `${btnMenuChaptersStateNum()}`;
   btnMenuChapters.addEventListener("click", (e) => {
@@ -10,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
       window.scrollTo({
         top: window.innerHeight,
         behavior: "smooth"
-      });btnMenuChapters
+      });
     } else {
-      console.log(btnMenuChapters.children)
+      console.log(btnMenuChapters.children);
       divMenuChapters.classList.toggle("hide");
       btnMenuChapters.children[0].innerHTML =
         divMenuChapters.classList.contains("hide")
@@ -31,10 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
     return Math.min(1, window.scrollY / window.innerHeight);
   }
 
+  let scroller = document.getElementById("scroller");
+
   window.onscroll = function () {
-    document.getElementById(
-      "scroller"
-    ).innerHTML = `window: '${window.innerWidth} x ${window.innerHeight}' > (X: ${window.scrollX}, Y: ${window.scrollY})`;
+    if (scroller)
+      scroller.innerHTML = `window: '${window.innerWidth} x ${window.innerHeight}' > (X: ${window.scrollX}, Y: ${window.scrollY})`;
 
     btnMenuChapters.style.transform = `scale(${btnMenuChaptersStateNum()})`;
     btnMenuChapters.style.opacity = `${btnMenuChaptersStateNum()}`;
