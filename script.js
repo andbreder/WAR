@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnMenuChapters.style.transform = `scale(${btnMenuChaptersStateNum()})`;
     btnMenuChapters.style.opacity = `${btnMenuChaptersStateNum()}`;
+    btnMenuChapters.disabled = window.scrollY <= window.innerHeight;
   };
 
   const preamble = document.getElementsByClassName("preamble")[0];
@@ -144,6 +145,37 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  const frontier_euro_fran = document.getElementById("frontier-euro-fran");
+  const frontier_euro_polo = document.getElementById("frontier-euro-polo");
+  const frontier_afri_arge = document.getElementById("frontier-afri-arge");
+  const frontier_afri_egit = document.getElementById("frontier-afri-egit");
+  const frontier_afri_suda = document.getElementById("frontier-afri-suda");
+  const frontier_asia_orie = document.getElementById("frontier-asia-orie");
+  const frontiers = [
+    frontier_afri_arge,
+    frontier_euro_fran,
+    frontier_euro_polo,
+    frontier_asia_orie,
+    frontier_afri_suda
+  ]
+  const frontier_symbols = frontier_afri_egit.getElementsByClassName("material-symbols-sharp");
+  let frontier_current_index = 0;
+  setInterval(function () {
+    for (let i = 0; i < frontiers.length; i++) {
+      frontiers[i].style.opacity = "0.1";
+      if (!frontier_symbols[i].classList.contains("display-none"))
+        frontier_symbols[i].classList.add("display-none");
+    }
+    frontier_symbols[frontier_current_index].classList.remove("display-none");
+    frontiers[frontier_current_index].style.opacity = "1";
+    if (++frontier_current_index >= frontiers.length)
+      frontier_current_index = 0;
+  }, 5000);
+
+  document.querySelectorAll('.frontiers-list-container > p > b').forEach((el, i) => {
+    el.innerText = `${String(i+1).padStart(2, '0')}. ${el.innerText}`
+  });
 });
 
 function scrollMeTo(id) {

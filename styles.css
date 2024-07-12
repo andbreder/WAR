@@ -81,6 +81,10 @@ html {
   color: #EA80FC;
 }
 
+.display-none {
+  display: none;
+}
+
 .text-center {
   text-align: center;
 }
@@ -196,6 +200,12 @@ html {
     transition: opacity 1s, transform 250ms;
     width: var(--menu_chapters_button_size);
     z-index: calc(var(--z_index_menu) + 50);
+  }
+
+  #menu-chapters:disabled {
+    background-color: #a0a0a0;
+    color: transparent;
+    text-shadow: 0 0 5px #FFF;
   }
 
   #menu-chapters>span {
@@ -743,5 +753,383 @@ html {
 
   main .territory {
     margin-left: 1em;
+  }
+
+
+
+
+
+  main .image-container.frontiers {
+    position: relative;
+    overflow: hidden;
+  }
+
+  main .image-container.frontiers>img {
+    animation-name: frontiers_anim;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0;
+  }
+
+  main .image-container.frontiers>img.nth1 {
+    filter: brightness(1) grayscale(0%);
+    opacity: 1;
+  }
+
+  main .image-container.frontiers>img:not(:first-of-type) {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  main .image-container.frontiers>img.nth1 {
+    animation-name: frontier_nth1;
+  }
+
+  main .image-container.frontiers>img.nth2 {
+    animation-name: frontier_nth2;
+  }
+
+  main .image-container.frontiers>img.nth3 {
+    animation-name: frontier_nth3;
+  }
+
+  main .image-container.frontiers>img.nth4 {
+    animation-name: frontier_nth4;
+  }
+
+  main .image-container.frontiers>img.nth5 {
+    animation-name: frontier_nth5;
+  }
+
+  @keyframes frontier_nth1 {
+    0% {
+      filter: brightness(1) grayscale(0%);
+    }
+
+    10% {
+      filter: brightness(0.3) grayscale(100%);
+    }
+
+    70% {
+      filter: brightness(0.3) grayscale(100%);
+    }
+
+    80% {
+      filter: brightness(1) grayscale(0%);
+    }
+  }
+
+  @keyframes frontier_nth2 {
+    0% {
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes frontier_nth3 {
+    0% {
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 0;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    40% {
+      opacity: 1;
+    }
+
+    45% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes frontier_nth4 {
+    0% {
+      opacity: 0;
+    }
+
+    40% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    65% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes frontier_nth5 {
+    0% {
+      opacity: 0;
+    }
+
+    60% {
+      opacity: 0;
+    }
+
+    70% {
+      opacity: 1;
+    }
+
+    80% {
+      opacity: 1;
+    }
+
+    85% {
+      opacity: 0;
+    }
+  }
+
+  .frontiers-grid {
+    display: grid;
+    font-weight: bold;
+    gap: 0.5em;
+    grid-template-areas:
+      'g-euro-fran g-euro-fran g-euro-fran g-euro-fran g-euro-polo g-euro-polo g-asia-orie'
+      'g-afri-arge g-afri-arge g-afri-arge g-afri-egit g-afri-egit g-afri-egit g-asia-orie'
+      'g-afri-arge g-afri-arge g-afri-arge g-afri-suda g-afri-suda g-afri-suda g-asia-orie';
+    margin: 1em 0;
+  }
+
+  .frontiers-grid>div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+    position: relative;
+  }
+
+
+  .frontiers-grid>div.euro-fran,
+  .frontiers-grid>div.euro-polo,
+  .frontiers-grid>div.asia-orie,
+  .frontiers-grid>div.afri-arge,
+  .frontiers-grid>div.afri-suda {
+    opacity: 0.2;
+    transition: opacity 3s;
+  }
+
+
+  .frontiers-grid>div.euro-fran,
+  .frontiers-grid>div.euro-polo {
+    background-color: var(--color_blue_flat);
+  }
+
+  .frontiers-grid>div.asia-orie {
+    background-color: #FFB300;
+  }
+
+  .frontiers-grid>div.afri-arge,
+  .frontiers-grid>div.afri-egit,
+  .frontiers-grid>div.afri-suda {
+    background-color: #F50057;
+  }
+
+  .frontiers-grid>div.euro-fran {
+    grid-area: g-euro-fran;
+  }
+
+  .frontiers-grid>div.euro-polo {
+    grid-area: g-euro-polo;
+  }
+
+  .frontiers-grid>div.asia-orie {
+    grid-area: g-asia-orie;
+  }
+
+  .frontiers-grid>div.afri-arge {
+    grid-area: g-afri-arge;
+  }
+
+  .frontiers-grid>div.afri-egit {
+    grid-area: g-afri-egit;
+    position: relative;
+  }
+
+  .frontiers-grid>div.afri-suda {
+    grid-area: g-afri-suda;
+  }
+
+  .frontiers-grid>div>.material-symbols-sharp {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    font-variation-settings: 'wght' 700, 'GRAD' 200;
+    opacity: 0;
+    position: absolute;
+    z-index: calc(var(--z_index_menu) + 100);
+  }
+
+  @keyframes frontier_arrow_down {
+    000% { opacity: 0.00; transform: translateY(00.00em) rotate(90deg); }
+    010% { opacity: 0.20; transform: translateY(-0.02em) rotate(90deg); }
+    020% { opacity: 0.40; transform: translateY(-0.05em) rotate(90deg); }
+    030% { opacity: 0.60; transform: translateY(-0.10em) rotate(90deg); }
+    040% { opacity: 0.80; transform: translateY(-0.05em) rotate(90deg); }
+    050% { opacity: 1.00; transform: translateY(-0.02em) rotate(90deg); }
+    060% { opacity: 0.80; transform: translateY(00.00em) rotate(90deg); }
+    070% { opacity: 0.60; transform: translateY(00.02em) rotate(90deg); }
+    080% { opacity: 0.40; transform: translateY(00.05em) rotate(90deg); }
+    090% { opacity: 0.20; transform: translateY(00.10em) rotate(90deg); }
+    100% { opacity: 0.00; transform: translateY(00.05em) rotate(90deg); }
+  }
+  @keyframes frontier_arrow_left {
+    000% { opacity: 0.00; transform: translateX(00.00em) rotate(180deg); }
+    010% { opacity: 0.20; transform: translateX(00.02em) rotate(180deg); }
+    020% { opacity: 0.40; transform: translateX(00.05em) rotate(180deg); }
+    030% { opacity: 0.60; transform: translateX(00.10em) rotate(180deg); }
+    040% { opacity: 0.80; transform: translateX(00.05em) rotate(180deg); }
+    050% { opacity: 1.00; transform: translateX(00.00em) rotate(180deg); }
+    060% { opacity: 0.80; transform: translateX(-0.02em) rotate(180deg); }
+    070% { opacity: 0.60; transform: translateX(-0.05em) rotate(180deg); }
+    080% { opacity: 0.40; transform: translateX(-0.10em) rotate(180deg); }
+    090% { opacity: 0.20; transform: translateX(-0.05em) rotate(180deg); }
+    100% { opacity: 0.00; transform: translateX(-0.02em) rotate(180deg); }
+  }
+  @keyframes frontier_arrow_right {
+    000% { opacity: 0.00; transform: translateX(00.00em) }
+    010% { opacity: 0.20; transform: translateX(-0.02em) }
+    020% { opacity: 0.40; transform: translateX(-0.05em) }
+    030% { opacity: 0.60; transform: translateX(-0.10em) }
+    040% { opacity: 0.80; transform: translateX(-0.05em) }
+    050% { opacity: 1.00; transform: translateX(-0.02em) }
+    060% { opacity: 0.80; transform: translateX(00.00em) }
+    070% { opacity: 0.60; transform: translateX(00.02em) }
+    080% { opacity: 0.40; transform: translateX(00.05em) }
+    090% { opacity: 0.20; transform: translateX(00.10em) }
+    100% { opacity: 0.00; transform: translateX(00.05em) }
+  }
+  @keyframes frontier_arrow_up {
+    000% { opacity: 0.00; transform: translateY(00.00em) rotate(270deg); }
+    010% { opacity: 0.20; transform: translateY(00.02em) rotate(270deg); }
+    020% { opacity: 0.40; transform: translateY(00.05em) rotate(270deg); }
+    030% { opacity: 0.60; transform: translateY(00.10em) rotate(270deg); }
+    040% { opacity: 0.80; transform: translateY(00.05em) rotate(270deg); }
+    050% { opacity: 1.00; transform: translateY(00.00em) rotate(270deg); }
+    060% { opacity: 0.80; transform: translateY(-0.02em) rotate(270deg); }
+    070% { opacity: 0.60; transform: translateY(-0.05em) rotate(270deg); }
+    080% { opacity: 0.40; transform: translateY(-0.10em) rotate(270deg); }
+    090% { opacity: 0.20; transform: translateY(-0.05em) rotate(270deg); }
+    100% { opacity: 0.00; transform: translateY(-0.02em) rotate(270deg); }
+  }
+
+
+  .frontiers-grid>div.afri-egit>.material-symbols-sharp:nth-of-type(1) {
+    animation-name: frontier_arrow_left;
+    left: -.65em;
+    top: calc(50% - .5em);
+  }
+
+  .frontiers-grid>div.afri-egit>.material-symbols-sharp:nth-of-type(2) {
+    animation-name: frontier_arrow_up;
+    left: 0;
+    top: -0.65em;
+  }
+
+  .frontiers-grid>div.afri-egit>.material-symbols-sharp:nth-of-type(3) {
+    animation-name: frontier_arrow_up;
+    left: 50%;
+    top: -0.65em;
+    transform: rotate(270deg);
+  }
+
+  .frontiers-grid>div.afri-egit>.material-symbols-sharp:nth-of-type(4) {
+    animation-name: frontier_arrow_right;
+    right: -0.65em;
+    top: calc(50% - .5em);
+  }
+
+  .frontiers-grid>div.afri-egit>.material-symbols-sharp:nth-of-type(5) {
+    animation-name: frontier_arrow_down;
+    bottom: -0.65em;
+    left: calc(50% -1em);
+  }
+
+
+  
+  .frontiers-list-container {
+    background-color: #ffffff07;
+    border-left: 0.25em solid;
+    margin: 1em 0;
+    padding: 1em 0 1em 1em;
+    border-radius: 0 1em 1em 0;
+  }
+  
+  .frontiers-list-container > b {
+    font-size: var(--font_size_subtitle);
+  }
+  
+  .frontiers-list-container.africa {
+    border-color: #F50057;
+  }
+
+  .frontiers-list-container.america-norte {
+    border-color: #FF6F00;
+  }
+
+  .frontiers-list-container.america-sul {
+    border-color: #00C853;
+  }
+
+  .frontiers-list-container.asia {
+    border-color: #FFB300;
+  }
+
+  .frontiers-list-container.europa {
+    border-color: var(--color_blue_flat);
+  }
+
+  .frontiers-list-container.oceania {
+    border-color: #FF5252;
+  }
+  
+
+
+
+  .highlight {
+    background-color: cyan;
+  }
+
+  .fixed-buttons {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fixed-buttons button {
+    margin: 5px;
   }
 }
