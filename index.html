@@ -27,7 +27,7 @@
     <p class="line_5">vai deitar na tua cama!</p>
     <p class="line_6">preguiça, te orienta!</p>
   </div>
-  <button id="menu-chapters" type="button" class="portrait md-ripples">
+  <button id="menu-chapters" type="button" class="portrait md-ripples" disabled>
     <span class="material-symbols-sharp">format_list_numbered</span>
   </button>
   <div id="menu-chapters-containers" class="hide">
@@ -38,10 +38,11 @@
       </label>
       <div class="input-effect">
         <input id="searcher" class="effect-9" type="text" placeholder="trocar cartas" />
-        <span class="focus-border">
-          <i></i>
-        </span>
+        <span class="focus-border"><i></i></span>
       </div>
+      <label class="comment text-right" style="margin-top: 5px; text-align: right; width: 100%;">
+        correspondências encontradas: <span>0</span>
+      </label>
     </div>
   </div>
   <header class="portrait">
@@ -67,10 +68,10 @@
       <p>Board Game</p>
     </article>
     <div class="post-alert">
-      <h3>
+      <b>
         para aprender a jogar,
         <b style="color: var(--color_yellow)">leia-me!</b>
-      </h3>
+      </b>
       <p class="no-print">arraste para cima a página e busque os temas</p>
       <small class="no-print" style="opacity: 0.5">
         ou não leia... e, no jogo, vá você de arrasta 🤷
@@ -165,41 +166,205 @@
         <span class="chat">O mapa do jogo NÃO tem países, tem territórios!</span>
       </p>
       <p class="territory-num territory-africa">
-        06 territórios - <span class="continent-africa">ÁFRICA</span>
+        <b>06</b> territórios - <span class="continent-africa">ÁFRICA</span>
       </p>
       <p class="territory">
         ÁFRICA DO SUL, ARGÉLIA, CONGO, EGITO, MADAGASCAR, SUDÃO
       </p>
       <p class="territory-num territory-america-norte">
-        09 territórios - <span class="continent-america-norte">AMÉRICA DO NORTE</span>
+        <b>09</b> territórios - <span class="continent-america-norte">AMÉRICA DO NORTE</span>
       </p>
       <p class="territory">
         ALASCA, CALIFÓRNIA, GROELÂNDIA, LABRADOR, MACKENZIE, MÉXICO, NOVA YORK, OTTAWA, VANCOUVER
       </p>
       <p class="territory-num territory-america-sul">
-        04 territórios - <span class="continent-america-sul">AMÉRICA DO SUL</span>
+        <b>04</b> territórios - <span class="continent-america-sul">AMÉRICA DO SUL</span>
       </p>
       <p class="territory">
         ARGENTINA, BRASIL, PERU, VENEZUELA
       </p>
       <p class="territory-num territory-asia">
-        12 territórios - <span class="continent-asia">ÁSIA</span>
+        <b>12</b> territórios - <span class="continent-asia">ÁSIA</span>
       </p>
       <p class="territory">
         ARAL, CHINA, DUDINKA, ÍNDIA, JAPÃO, MONGÓLIA, OMSK, ORIENTE MÉDIO, SIBÉRIA, TCHITA, VIETNÃ, VLADVOSTOK
       </p>
       <p class="territory-num territory-europa">
-        07 territórios - <span class="continent-europa">EUROPA</span>
+        <b>07</b> territórios - <span class="continent-europa">EUROPA</span>
       </p>
       <p class="territory">
         ALEMANHA, INGLATERRA, INSLÂNDIA, FRANÇA, MOSCOU, POLÔNIA, SUÉCIA
       </p>
       <p class="territory-num territory-oceania">
-        04 territórios - <span class="continent-oceania">OCEANIA</span>
+        <b>04</b> territórios - <span class="continent-oceania">OCEANIA</span>
       </p>
       <p class="territory">
         AUSTRÁLIA, BORNÉU, NOVA GUINÉ, SUMATRA
       </p>
+      <h1 class="title sub">Fronteiras</h1>
+      <hr />
+      <p>
+        Cada território tem claramente destacadas suas fronteiras com os demais territórios no mapa, possuindo, cada um, duas ou mais fronteiras com os territórios vizinhos.
+      </p>
+      <p>
+        Quando ligados por uma fronteira ou rota destacada, <span class="comment">aquelas linhas mais grosas que ligam territórios distantes</span>, os territórios podem interagir durante as rodadas, territórios sem essas ligações diretas desenhadas no mapa nunca irão interagir. <span class="comment">Especificamente nessa versão do jogo, já que ninguém voa</span>
+      </p>
+      <p class="text-center">
+        <span class="chat"><i>Hey, Faraó!</i> Olha pro território <b>EGITO</b>!</span>
+      </p>
+      <div class="image-container frontiers">
+        <img class="map nth1" alt="parte do mapa, exibindo as fronteiras do egito" src="./assets/frontiers.png">
+        <img class="map nth2" alt="parte do mapa, destacando o território egito" src="./assets/frontiers-egypt.png">
+        <img class="map nth3" alt="parte do mapa, destacando os territórios da áfrica com fronteira com o egito" src="./assets/frontiers-africa.png">
+        <img class="map nth4" alt="parte do mapa, destacando os territórios da europa com fronteira com o egito" src="./assets/frontiers-europa.png">
+        <img class="map nth5" alt="parte do mapa, destacando os territórios da ásia com fronteira com o egito" src="./assets/frontiers-asia.png">
+        <label for="war-map"><small class="comment">e.g:</small> fronteiras do EGITO</label>
+      </div>
+      <p>
+        Vou apresentar a situção do território <b class="continent-africa">EGITO</b> como exemplo: as fronteiras do egito são: <b class="continent-africa">ARGÉLIA</b>, <b class="continent-europa">FRANÇA</b>, <b class="continent-europa">POLÔNIA</b>, <b class="continent-asia">ORIENTE MÉDIO</b> E <b class="continent-africa">SUDÃO</b>. Observe as fronteiras marítimas com frança e polônia, indicadas no claramente no mapa pelas linhas <span class="comment">essas pontes ali!</span>; as demais fronteiras são terrestres, identificadas pela ligação com o território <span class="comment">de maneira óbvia</span>. Outros territórios como: CONGO e ALEMANHA não possuem fronteiras com o EGITO!
+      </p>
+      <div class="frontiers-grid">
+        <div id="frontier-euro-fran" class="euro-fran">
+          <span>FRANÇA</span>
+        </div>
+        <div id="frontier-euro-polo" class="euro-polo">
+          <span>POLÔNIA</span>
+        </div>
+        <div id="frontier-afri-arge" class="afri-arge">
+          <span>ARGÉLIA</span>
+        </div>
+        <div id="frontier-afri-egit" class="afri-egit">
+          <span class="material-symbols-sharp display-none">keyboard_double_arrow_right</span>
+          <span class="material-symbols-sharp display-none">keyboard_double_arrow_right</span>
+          <span class="material-symbols-sharp display-none">keyboard_double_arrow_right</span>
+          <span class="material-symbols-sharp display-none">keyboard_double_arrow_right</span>
+          <span class="material-symbols-sharp display-none">keyboard_double_arrow_right</span>
+          <span>EGITO</span>
+        </div>
+        <div id="frontier-afri-suda" class="afri-suda">
+          <span>SUDÃO</span>
+        </div>
+        <div id="frontier-asia-orie" class="asia-orie">
+          <span>ORIENTE MÉDIO</span>
+        </div>
+      </div>
+      <p class="text-center">
+        <span class="chat"><b>ORIENTE MÉDIO</b> não faz fronteira com o <b>SUDÃO</b>!</span>
+      </p>
+      <p>
+        Como já te disse todas as fronteiras são suficientemente claras no mapa, mas mesmo assim, vou lhe previnir da possível deficiência oftalmologica <span class="comment">ou mau-caratísmo</span> dos seus adversários; Abaixo estão listadas todas as fronteiras de cada território no mapa:
+      </p>
+      <div class="frontiers-list-container america-norte">
+        <b class="continent-america-norte">AMÉRICA DO NORTE</b>
+        <p><b class="continent-america-norte">ALASCA</b><br />
+          MACKENZIE, VANCOUVER, VLADIVOSTOK</p>
+        <p><b class="continent-america-norte">CALIFÓRNIA</b><br />
+          MÉXICO, NOVA YORK, OTTAWA, VANCOUVER</p>
+        <p><b class="continent-america-norte">GROELÂNDIA</b><br />
+          ISLÂNDIA, LABRADOR, MACKENZIE, OTTAWA</p>
+        <p><b class="continent-america-norte">LABRADOR</b><br />
+          GROELÂNDIA, NOVA YORK, OTTAWA</p>
+        <p><b class="continent-america-norte">MACKENZIE</b><br />
+          ALASCA, GROELÂNDIA, OTTAWA, VANCOUVER</p>
+        <p><b class="continent-america-norte">MÉXICO</b><br />
+          CALIFÓRNIA, NOVA YORK, VENEZUELA</p>
+        <p><b class="continent-america-norte">NOVA YORK</b><br />
+          CALIFÓRNIA, LABRADOR, MÉXICO, OTTAWA</p>
+        <p><b class="continent-america-norte">OTTAWA</b><br />
+          CALIFÓRNIA, GROELÂNDIA, LABRADOR, MACKENZIE, NOVA YORK, VANCOUVER</p>
+        <p><b class="continent-america-norte">VANCOUVER</b><br />
+          ALASCA, CALIFÓRNIA, MACKENZIE, OTTAWA</p>
+      </div>
+
+      <div class="frontiers-list-container america-sul">
+        <b class="continent-america-sul">
+          AMÉRICA DO SUL</b>
+        <p><b class="continent-america-sul">ARGENTINA</b><br />
+          BRASIL, PERU</p>
+        <p><b class="continent-america-sul">BRASIL</b><br />
+          ARGENTINA, ARGÉLIA, PERU, VENEZUELA</p>
+        <p><b class="continent-america-sul">PERU</b><br />
+          ARGENTINA, BRASIL, VENEZUELA</p>
+        <p><b class="continent-america-sul">VENEZUELA</b><br />
+          BRASIL, MÉXICO, PERU</p>
+      </div>
+
+      <div class="frontiers-list-container africa">
+        <b class="continent-africa">
+          ÁFRICA</b>
+        <p><b class="continent-africa">ÁFRICA DO SUL</b><br />
+          CONGO, MADAGASCAR, SUDÃO</p>
+        <p><b class="continent-africa">ARGÉLIA</b><br />
+          BRASIL, CONGO, EGITO, FRANÇA, SUDÃO</p>
+        <p><b class="continent-africa">CONGO</b><br />
+          ÁFRICA DO SUL, ARGÉLIA, SUDÃO</p>
+        <p><b class="continent-africa">EGITO</b><br />
+          ARGÉLIA, FRANÇA, ORIENTE MÉDIO, POLÔNIA, SUDÃO</p>
+        <p><b class="continent-africa">MADAGASCAR</b><br />
+          ÁFRICA DO SUL, SUDÃO</p>
+        <p><b class="continent-africa">SUDÃO</b><br />
+          ÁFRICA DO SUL, ARGÉLIA, CONGO, EGITO, MADAGASCAR</p>
+      </div>
+
+      <div class="frontiers-list-container europa">
+        <b class="continent-europa">
+          EUROPA
+        </b>
+        <p><b class="continent-europa">ALEMANHA</b><br />
+          FRANÇA, INGLATERRA, POLÔNIA</p>
+        <p><b class="continent-europa">INGLATERRA</b><br />
+          ALEMANHA, FRANÇA, ISLÂNDIA, SUÉCIA</p>
+        <p><b class="continent-europa">ISLÂNDIA</b><br />
+          GROELÂNDIA, INGLATERRA</p>
+        <p><b class="continent-europa">FRANÇA</b><br />
+          ALEMANHA, ARGÉLIA, EGITO, INGLATERRA, POLÔNIA</p>
+        <p><b class="continent-europa">MOSCOU</b><br />
+          ARAL, ORIENTE MÉDIO, OMSK, POLÔNIA, SUÉCIA</p>
+        <p><b class="continent-europa">POLÔNIA</b><br />
+          ALEMANHA, EGITO, FRANÇA, MOSCOU, ORIENTE MÉDIO</p>
+        <p><b class="continent-europa">SUÉCIA</b><br />
+          INGLATERRA, MOSCOU</p>
+      </div>
+
+      <div class="frontiers-list-container asia">
+        <b class="continent-asia">ÁSIA</b>
+        <p><b class="continent-asia">ARAL</b><br />
+          CHINA, ÍNDIA, MOSCOU, OMSK, ORIENTE MÉDIO</p>
+        <p><b class="continent-asia">CHINA</b><br />
+          ARAL, JAPÃO, MONGÓLIA, OMSK, TCHITA, VIETNÃ</p>
+        <p><b class="continent-asia">DUDINKA</b><br />
+          MONGÓLIA, OMSK, SIBÉRIA, TCHITA</p>
+        <p><b class="continent-asia">ÍNDIA</b><br />
+          ARAL, CHINA, ORIENTE MÉDIO, SUMATRA, VIETNÃ</p>
+        <p><b class="continent-asia">JAPÃO</b><br />
+          CHINA, VLADIVOSTOK</p>
+        <p><b class="continent-asia">MONGÓLIA</b><br />
+          CHINA, DUDINKA, OMSK, TCHITA</p>
+        <p><b class="continent-asia">OMSK</b><br />
+          ARAL, CHINA, DUDINKA, MONGÓLIA, MOSCOU</p>
+        <p><b class="continent-asia">ORIENTE MÉDIO</b><br />
+          ARAL, EGITO, ÍNDIA, MOSCOU, POLÔNIA</p>
+        <p><b class="continent-asia">SIBÉRIA</b><br />
+          DUDINKA, TCHITA, VLADIVOSTOK</p>
+        <p><b class="continent-asia">TCHITA</b><br />
+          CHINA, DUDINKA, MONGÓLIA, SIBÉRIA, VLADIVOSTOK</p>
+        <p><b class="continent-asia">VIETNÃ</b><br />
+          CHINA, ÍNDIA, BORNEU</p>
+        <p><b class="continent-asia">VLADIVOSTOK</b><br />
+          ALASCA, JAPÃO, SIBÉRIA, TCHITA</p>
+      </div>
+
+      <div class="frontiers-list-container oceania">
+        <b class="continent-oceania">OCEANIA</b>
+        <p><b class="continent-oceania">AUSTRÁLIA</b><br />
+          BORNEU, NOVA GUINÉ, SUMATRA</p>
+        <p><b class="continent-oceania">BORNEU</b><br />
+          AUSTRÁLIA, NOVA GUINÉ, VIETNÃ</p>
+        <p><b class="continent-oceania">NOVA GUINÉ</b><br />
+          AUSTRÁLIA, BORNEU</p>
+        <p><b class="continent-oceania">SUMATRA</b><br />
+          AUSTRÁLIA, ÍNDIA</p>
+      </div>
 
     </section>
     <section>
@@ -225,7 +390,6 @@
   </main>
   <footer class="portrait">
     <span>FOOTER</span>
-    <!-- <p>&copy; 2024 WAR Board Game</p> -->
   </footer>
   <script src="script.js"></script>
   <script src="ripples.js"></script>
