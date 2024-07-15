@@ -14,27 +14,46 @@ document.addEventListener("DOMContentLoaded", function () {
     options.classList.add("options");
     divMenuChapters.prepend(options);
 
-    let titleIndex = 0;
-    let subtitleIndex = 0;
+    let titleIndex_level0 = 0;
+    let titleIndex_Level1 = 0;
+    let titleIndex_Level2 = 0;
+    let titleIndex_Level3 = 0;
 
     for (let i = 0; i < titles.length; i++) {
       const title = titles[i];
 
-      if (title.classList.contains("sub")) {
-        ++subtitleIndex;
-      } else {
-        ++titleIndex;
-        subtitleIndex = 0;
+      switch (title.dataset.level) {
+        case '1':
+          ++titleIndex_Level1;
+          titleIndex_Level2 = 0;
+          titleIndex_Level3 = 0;
+          break;
+        case '2':
+          ++titleIndex_Level2;
+          titleIndex_Level3 = 0;
+          break;
+        case '3':
+          ++titleIndex_Level3;
+          break;
+        default:
+          ++titleIndex_level0;
+          titleIndex_Level1 = 0;
+          titleIndex_Level2 = 0;
+          titleIndex_Level3 = 0;
+          break;
       }
 
       var option = document.createElement("div");
       option.classList.add("option", "md-ripples");
-      if (title.classList.contains("sub")) option.classList.add("sub");
+      if (title.dataset.level) option.classList.add(`level${title.dataset.level}`);
 
-      let prefixNum = `${titleIndex}.${subtitleIndex > 0 ? subtitleIndex + "." : ""
-        }`;
-      option.innerText = `${prefixNum} ${title.innerText}`;
-      title.innerText = `${prefixNum} ${title.innerText}`;
+      let prefix0 = `${titleIndex_level0}.`;
+      let prefix1 = titleIndex_Level1 == 0 ? "" : `${titleIndex_Level1}.`;
+      let prefix2 = titleIndex_Level2 == 0 ? "" : `${titleIndex_Level2}.`;
+      let prefix3 = titleIndex_Level3 == 0 ? "" : `${titleIndex_Level3}.`;
+
+      option.innerText = `${prefix0 + prefix1 + prefix2 + prefix3} ${title.innerText}`;
+      title.innerText = `${prefix0 + prefix1 + prefix2 + prefix3} ${title.innerText}`;
 
       var icon = document.createElement("span");
       icon.classList = "material-symbols-sharp";
@@ -62,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
         behavior: "smooth"
       });
     } else {
-      console.log(btnMenuChapters.children);
       divMenuChapters.classList.toggle("hide");
       btnMenuChapters.children[0].innerHTML =
         divMenuChapters.classList.contains("hide")
@@ -173,21 +191,126 @@ document.addEventListener("DOMContentLoaded", function () {
       frontier_current_index = 0;
   }, 5000);
 
-  document.querySelectorAll('.frontiers-list-container > p > b').forEach((el, i) => {
-    el.innerText = `${String(i+1).padStart(2, '0')}. ${el.innerText}`
+  document.querySelectorAll(".frontiers-list-container > p > b").forEach((el, i) => {
+    el.innerText = `${String(i + 1).padStart(2, '0')}. ${el.innerText}`
   });
+
+  document.querySelectorAll(".ordered-frontiers-list").forEach((line, i) => {
+    let territories = line.innerText.split(',').map(e => e.trim());
+    line.innerHTML = "";
+    for (let i = 0; i < territories.length; i++) {
+      const span = document.createElement("span");
+      line.append(span);
+      span.innerHTML = territories[i];
+      span.addEventListener("click", () => {
+        const name = territories[i];
+        document.querySelectorAll(".ordered-frontiers-list").forEach((el, i) => {
+          el.querySelectorAll("span").forEach(e => {
+            e.classList.remove("highlight");
+            if (e.innerText == name) {
+              e.classList.add("highlight");
+            }
+          });
+        });
+      });
+    }
+  });
+
+  const granades_chat = document.getElementById("granades-chat");
+  granades_chat.innerHTML += granades_chat.innerHTML;
+
+  const cannon_chat = document.getElementById("cannon-chat");
+  cannon_chat.innerHTML += cannon_chat.innerHTML;
+
+  getGit();
 });
 
 function scrollMeTo(id) {
-  console.log("scrollMeTo :: " + id);
-
   var element = document.getElementById(id);
-
-  console.log(element);
-
   if (element != null)
     window.scroll({
       top: element.getBoundingClientRect().top + window.scrollY,
       behavior: "smooth"
     });
+}
+
+async function getGit() {
+  
+  const github = document.getElementById("github");
+  if (github) {
+
+    var apiGitUser, apiGitRepo, apiGitBranches;
+
+    apiGitUser = await fetch("https://api.github.com/users/andbreder").then(resp => resp.json());
+    if (!apiGitUser) return;
+
+    apiGitRepo = await fetch(apiGitUser.repos_url).then(resp => resp.json());
+    apiGitRepo = apiGitRepo.find(item => item.name === "WAR");
+    if (!apiGitRepo) return;
+
+    apiGitBranches = await fetch(apiGitRepo.branches_url.split('{')[0]).then(resp => resp.json());
+    if (!apiGitBranches) return;
+
+    let date = new Date(apiGitRepo.updated_at);
+    let dd = String(date.getDate()).padStart(2, '0');
+    let MM = String(date.getMonth() + 1).padStart(2, '0');
+    let yy = date.getFullYear();
+    let HH = String(date.getHours()).padStart(2, '0');
+    let mm = String(date.getMinutes()).padStart(2, '0');
+
+    github.innerHTML = `
+      <div class="header">
+        <a class="github-logo" href="${apiGitUser.html_url}" aria-label="github/@andbreder">
+          <img src="assets/github-mark-white.png" aria-label="GitHub Logo" height="32">
+        </a>
+        <b>
+          ${apiGitUser.login}
+        </b>
+        <a class="link-war" href="${apiGitUser.html_url}/WAR" aria-label="github/@andbreder/WAR">
+          /WAR
+        </a>
+      </div>
+      <div class="user-info">
+        <div>
+          <img alt="${apiGitUser.name}/${apiGitUser.login}" src="${apiGitUser.avatar_url}" class="avatar">
+        </div>
+        <div>
+          <p class="name">${apiGitUser.name}</p>
+          <p class="login">${apiGitUser.login}</p>
+          <p class="bio">${apiGitUser.bio}</p>
+          <p class="social">
+            <span class="material-symbols-sharp">group</span>
+            <a href="${apiGitUser.followers_url}">
+              <span class="followers">${apiGitUser.followers}</span> followers
+            </a>
+            <b> · </b>
+            <a href="${apiGitUser.following_url}">
+              <span class="followers">${apiGitUser.following}</span> following
+            </a>
+          </p>
+          <p class="mail">
+            <span class="material-symbols-sharp">mail</span>
+            <a href="mailto:${apiGitUser.login}@gmail.com">
+              ${apiGitUser.login}@gmail.com
+            </a>
+          </p>
+          <p class="repos">
+            <span class="material-symbols-sharp">folder_data</span>
+            <a href="${apiGitUser.html_url}/repos">
+              <span>${apiGitUser.public_repos}</span> repositories
+            </a>
+          </p>
+        </div>
+      </div>
+      <hr style="margin: 0 0 1em 1em; width: calc(100% - 2em);"/>
+      <div class="war-info">
+        <p><span>last updated on</span> <b class="color-green">${HH}:${mm} ${dd}/${MM}/${yy}</b></p>
+        <p>
+          <span>branches</span> ${apiGitBranches.length} 
+          <b> · </b>
+          <span>license</span> ${apiGitRepo.license.spdx_id}
+        </p>
+      </div>
+      `;
+  }
 }
