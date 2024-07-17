@@ -219,8 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const granades_chat = document.getElementById("granades-chat");
   granades_chat.innerHTML += granades_chat.innerHTML;
 
-  const cannon_chat = document.getElementById("cannon-chat");
-  cannon_chat.innerHTML += cannon_chat.innerHTML;
+  const cannons_chat = document.getElementById("cannons-chat");
+  cannons_chat.innerHTML += cannons_chat.innerHTML;
+
+  const tanks_chat = document.getElementById("tanks-chat");
+  tanks_chat.innerHTML += tanks_chat.innerHTML;
 
   getGit();
 });
@@ -235,7 +238,7 @@ function scrollMeTo(id) {
 }
 
 async function getGit() {
-  
+
   const github = document.getElementById("github");
   if (github) {
 
@@ -261,7 +264,7 @@ async function getGit() {
     github.innerHTML = `
       <div class="header">
         <a class="github-logo" href="${apiGitUser.html_url}" aria-label="github/@andbreder">
-          <img src="assets/github-mark-white.png" aria-label="GitHub Logo" height="32">
+          <img src="assets/github-mark-icon.png" aria-label="GitHub Logo" height="32">
         </a>
         <b>
           ${apiGitUser.login}

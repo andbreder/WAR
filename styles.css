@@ -3,6 +3,7 @@
   --color_blue_darker: #0036c6;
   --color_blue_dark: #0046ff;
   --color_blue_flat: #2979ff;
+  --color_blue_flat_rgb: 41, 121, 255;
   --color_blue_light: #5584ff;
   --color_blue_lighter: #d2dfff;
 
@@ -1404,7 +1405,8 @@ html {
   }
 
   #soldier-granade,
-  #soldier-pistol {
+  #soldier-pistol,
+  #general-table {
     --border-width: 0.5em;
     background-color: black;
     border-color: black;
@@ -1430,12 +1432,13 @@ html {
     40% {
       object-position: 0 -22vh;
       opacity: 1;
+      transform: scale(1);
     }
 
     80% {
       object-position: 0 -22vh;
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1.05);
     }
 
     100% {
@@ -1459,12 +1462,13 @@ html {
     40% {
       object-position: -8vw -10vh;
       opacity: 1;
+      transform: scale(1);
     }
 
     80% {
       object-position: -8vw -10vh;
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1.05);
     }
 
     100% {
@@ -1474,30 +1478,44 @@ html {
     }
   }
 
-  .granades-list,
-  .cannons-list {
-    display: flex;
-    gap: 0.5em;
-    padding-left: 0.5em;
-    position: relative;
+
+  #general-table>img {
+    animation: general-table 10s ease-out infinite;
+    object-position: -50vw -60vh;
+    transform: scale(2);
+
+    object-fit: cover;
   }
 
-  .granades-list>img,
-  .cannons-list>img {
-    background-color: #fff1;
-    border-radius: 0.5em;
-    padding: 1em 1em 0.5em 1em;
-    width: calc((100% / var(--granades_count)) - (var(--granades_count) - 1) * 0.5em);
-    z-index: var(--z_index_main);
+  @keyframes general-table {
+    0% {
+      object-position: -110vw -62vh;
+      opacity: 0;
+      transform: scale(2);
+    }
+
+    40% {
+      object-position: -70vw -22vh;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    80% {
+      object-position: -70vw -22vh;
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    100% {
+      object-position: 0vw -20vh;
+      opacity: 0;
+      transform: scale(1.1);
+    }
   }
 
-  .cannons-list>img {
-    padding: 0.25em;
-    width: calc((100% / var(--granades_count)) - 1em);
-  }
-
+  .cannons-history,
   .granades-history,
-  .cannons-history {
+  .tanks-history {
     display: flex;
     flex-direction: column;
     margin: 0 -1rem;
@@ -1507,10 +1525,12 @@ html {
     width: 100vw;
   }
 
+  .cannons-history::before,
+  .cannons-history::after,
   .granades-history::before,
   .granades-history::after,
-  .cannons-history::before,
-  .cannons-history::after {
+  .tanks-history::before,
+  .tanks-history::after {
     background: linear-gradient(to right, var(--default_background_color) 0%, rgba(var(--default_background_color_rgb), 0.0) 100%);
     content: "";
     height: 100%;
@@ -1520,16 +1540,55 @@ html {
     z-index: var(--z_index_main);
   }
 
+  .cannons-history::after,
   .granades-history::after,
-  .cannons-history::after {
+  .tanks-history::after {
     right: -1px;
     transform: rotateZ(180deg);
   }
 
+  .cannons-history::before,
   .granades-history::before,
-  .cannons-history::before {
+  .tanks-history::before {
     left: 0;
   }
+
+  .cannons-list,
+  .granades-list,
+  .tanks-list {
+    display: flex;
+    gap: 0.5em;
+    position: relative;
+  }
+
+  .cannons-list>img,
+  .granades-list>img,
+  .tanks-list>img {
+    background-color: #fff1;
+    border-radius: 0.5em;
+    width: calc((100% / var(--granades_count)) - (var(--granades_count) - 1) * 0.5em);
+    z-index: var(--z_index_main);
+  }
+
+  .cannons-list>img {
+    flex: 1;
+    padding: 1em 0.25em;
+    width: calc((100% / var(--granades_count)) - 1em);
+  }
+
+  .granades-list>img {
+    flex: 1;
+    padding: 1em 1em 0.5em 1em;
+  }
+
+  .tanks-list>img {
+    flex: 1;
+    padding: 0.75em 0.25em 0.75em 0.25em;
+  }
+
+
+
+
 
   .slide-track {
     gap: 0.5rem;
@@ -1624,9 +1683,7 @@ html {
     font-weight: 900;
   }
 
-  footer>.header>.title>span:last-of-type {
-
-  }
+  footer>.header>.title>span:last-of-type {}
 
   @keyframes panzerTraveling {
     00.00% {
@@ -1664,6 +1721,73 @@ html {
       background-color: rgba(var(--color_yellow_flat_rgb), 0.2);
     }
   }
+
+  .pieces {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position: relative;
+  }
+
+  .pieces .piece-row {
+    display: flex;
+    flex: 1;
+    gap: 2em;
+    position: relative;
+  }
+
+  .pieces .piece-row .piece-cell {
+    align-items: stretch;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+
+  .pieces .piece-row .piece-cell>div:first-of-type {
+    border: 4px double rgba(var(--color_blue_flat_rgb), 0.2);
+    font-size: 1.2em;
+    padding: 0.25em 0;
+    position: relative;
+    
+    display: flex;
+  }
+
+  .pieces .piece-row .piece-cell>div:first-of-type>div {
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 100%;
+    color: var(--color_yellow_flat);
+    font-size: 2em;
+    height: 0.7em;
+    margin-left: -0.45em;
+    margin-top: -0.5em;
+    line-height: 0.5em;
+    width: 0.7em;
+  }
+  
+  .pieces .piece-row .piece-cell>div:first-of-type>b{
+    margin: auto;
+  }
+
+  .pieces .piece-row .piece-cell>img {
+    filter: drop-shadow(0 0 0.25rem black);
+    height: 10vw;
+  }
+
+  .pieces .piece-row .piece-cell>img:last-of-type {
+    margin: 0 auto;
+    z-index: calc(var(--z_index_main)+99);
+  }
+
+  .pieces .piece-row .piece-cell>img:not(:last-of-type) {
+    position: absolute;
+    bottom: 0;
+  }
+
 
 
 
