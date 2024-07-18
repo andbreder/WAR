@@ -7,6 +7,7 @@
   <title>WAR Board Game</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet" />
@@ -418,7 +419,7 @@
           <b class="color-yellow">AMARELO</b>, <b class="color-blue">AZUL</b>, <b>BRANCO</b>, <b class="color-gray">PRETO</b>, <b class="color-green">VERDE</b> e <b class="color-red">VERMELHO</b>
         </p>
       </div>
-      <h1 class="title" data-level="2">GRANADAS</h1>
+      <h1 class="title" data-level="2">Granadas</h1>
       <div>
         <hr />
         <p>
@@ -568,19 +569,18 @@
       <div>
         <hr />
         <p>
-          Estando explicadas as peças do jogo: GRANADAS, CANHÕES e TANQUES; a tabela a seguir é uma simplificação da representação dos valores das peças, um comparativos entre elas. Lembrando que a GRANADA é a base dos cálculos, as combinações básicas são:
+          Estando explicadas as peças do jogo: <b>GRANADAS</b>, <b>CANHÕES</b> e <b>TANQUES</b>; a tabela a seguir é uma simplificação da representação dos valores das peças, um comparativos entre elas. Lembrando que a GRANADA é a base dos cálculos, as combinações básicas são:
         </p>
         <div class="pieces">
           <div class="piece-row">
-
             <div class="piece-cell">
-              <div class="color-green">
+              <div class="title-count color-green">
                 <b>1 GRANADA</b>
               </div>
               <img alt="granada verde" src="./assets/granade_green.png">
             </div>
             <div class="piece-cell">
-              <div class="color-green">
+              <div class="title-count color-green">
                 <b>5 GRANADAS</b>
               </div>
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -3%; left: 015%; transform: rotate(-10deg);">
@@ -588,9 +588,12 @@
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -3%; right: 15%; transform: rotate(010deg);">
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -1%; right: 27%; transform: rotate(004deg);">
               <img alt="granada verde" src="./assets/granade_green.png">
+              <div class="arrow-equal">
+                <div></div>
+              </div>
             </div>
             <div class="piece-cell">
-              <div class="color-green">
+              <div class="title-count color-green">
                 <b>10 GRANADAS</b>
               </div>
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: 5%; left: 015%; transform: rotate(-10deg);">
@@ -598,21 +601,21 @@
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: 5%; right: 15%; transform: rotate(010deg);">
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: 7%; right: 27%; transform: rotate(004deg);">
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: 9%; left: 38.9%;">
-
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -3%; left: 015%; transform: rotate(-10deg);">
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -1%; left: 027%; transform: rotate(-04deg);">
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -3%; right: 15%; transform: rotate(010deg);">
               <img alt="granada verde" src="./assets/granade_green.png" style="bottom: -1%; right: 27%; transform: rotate(004deg);">
               <img alt="granada verde" src="./assets/granade_green.png">
+              <div class="arrow-equal">
+                <div></div>
+              </div>
             </div>
-
           </div>
           <div class="piece-row">
-
             <div class="piece-cell">
             </div>
             <div class="piece-cell">
-              <div class="color-green">
+              <div class="title-count color-green">
                 <div>
                   <b>=</b>
                 </div>
@@ -621,34 +624,150 @@
               <img alt="canhão verde" src="./assets/howitzer_green.png">
             </div>
             <div class="piece-cell">
-              <div class="color-green">
+              <div class="title-count color-green">
                 <div>
                   <b>=</b>
                 </div>
                 <b>2 CANHÕES</b>
               </div>
               <img alt="canhão verde" src="./assets/howitzer_green.png">
+              <div class="arrow-equal anim-delay-half">
+                <div></div>
+              </div>
             </div>
-
           </div>
           <div class="piece-row">
-
             <div class="piece-cell">
             </div>
             <div class="piece-cell">
             </div>
             <div class="piece-cell">
-              <div class="color-green">
-                <div>
+              <div class="title-count color-green">
+                <div class="anim-delay-half">
                   <b>=</b>
                 </div>
                 <b>1 TANQUE</b>
               </div>
               <img alt="canhão verde" src="./assets/tank_green.png">
             </div>
-
+          </div>
+          <div class="sun-tzu">
+            <img class="face" src="assets/SUN-TZU.png" alt="Sun Tzu">
+            <img class="plate" src="assets/SUN-TZU-PLATE.png" alt="Placa de Madeira escrito 'Sun Tzu'">
+            <div class="sun-hints">
+              <span>TRIUNFAM</span>
+              <span>AQUELES QUE</span>
+              <span>SABEM</span>
+              <span>QUANDO LUTAR</span>
+              <span>E QUANDO ESPERAR!</span>
+            </div>
           </div>
         </div>
+        <span class="sun-tzu-description">foi um general, estrategista e filósofo chinês</span>
+      </div>
+
+
+      <h1 class="title" data-level="1">Cartas</h1>
+      <div>
+        <hr />
+        <p>
+          Existem dois tipos de cartas no WAR, <b>Cartas de Objetivos</b> e <b>Cartas de Territórios</b>.
+        </p>
+      </div>
+      <h1 class="title" data-level="1">Cartas de Objetivo</h1>
+      <div>
+        <hr />
+        <p>
+          Essas cartas contém escrito qual o objetivo do jogador na partida!
+        </p>
+        <p>
+          Cada jogador recebe apenas uma <b>carta-objetivo</b> por partida <span class="chat">que não pode ser trocada!</span>
+        </p>
+        <p>
+          Quando um jogador atinge seu objetivo, ele deve anunciar sua vitória lendo e mostrando sua carta para que todos os jogadores possam legitimar sua vitória! <span class="comment">E eu te aconselho a verificar se antes se realmente ganhou, e caso aconteça, se realmente perdeu.</span>
+        </p>
+        <p>&nbsp;</p>
+        <div class="image-container">
+          <div class="card-focus-objective-border"></div>
+          <img alt="Foco no objetivo" id="card-focus-objective" src="./assets/card-objective.JPG">
+          <img alt="Exemplo de Carta de Objetivo" id="card-objective" src="./assets/card-objective.JPG">
+          <label for="card-objective"><small class="comment">e.g:</small> carta objetivo</label>
+        </div>
+        <p>
+          <span class="comment">Mas ATENÇÃO, Jovem Padawan!</span> Caso a vitória seja anunciada mas o presunçoso comandante não tenha atingido plenamente seu objetivo, seu exército será submetido as sanções e a <b class="murphy-tag">Lei da Corte-Marcial de Murphy no ARTIGO 1</b>.
+        </p>
+      </div>
+      <h1 class="title" data-level="1">Cartas de Territórios</h1>
+      <div>
+        <hr />
+        <p>
+          Essas cartas são utilizadas no início da partida para dividir os territórios do mapa entre os jogadores e durante a partida são recebidas, <b>uma a uma</b>, caso o jogador tenha dominado algum novo território na etapa de ataque, na sua vez.
+        </p>
+        <p>
+          As cartas-território possuem descrição do continente e do território a qual pertencem afim de conceder bônus extra em sua eventual troca por novas tropas.
+        </p>
+        <p>&nbsp;</p>
+        <div class="image-container">
+          <div class="card-focus-territory-border"></div>
+          <img alt="Foco no território" id="card-focus-territory" src="./assets/card-territory.JPG">
+          <img alt="Exemplo de Carta de Território" id="card-territory" src="./assets/card-territory.JPG">
+          <label for="card-territory"><small class="comment">e.g:</small> carta território</label>
+        </div>
+        <p>
+          No topo a indicação do continente e nome, no centro, a figura extraída do mapa que representa o território e, logo abaixo da figura, uma das três seguintes formas geométricas <span class="chat">e vou escrever o nome sim, vai que você se confunde!</span>
+        </p>
+        <div class="pieces" style="padding-bottom: unset;">
+          <div class="piece-row" style="gap: 0.5em;">
+            <div class="piece-cell">
+              <div class="image-container">
+                <img alt="Exemplo de Carta de Território" src="./assets/shape-circle.png" class="shape-container shape1">
+                <label for="card-territory" style="align-self: stretch; margin-left: 1px; width: auto;"><small class="comment">e.g:</small> círculo</label>
+              </div>
+            </div>
+            <div class="piece-cell">
+              <div class="image-container">
+                <img alt="Exemplo de Carta de Território" src="./assets/shape-square.png" class="shape-container shape2">
+                <label for="card-territory" style="align-self: stretch; margin-left: 1px; width: auto;"><small class="comment">e.g:</small> quadrado</label>
+              </div>
+            </div>
+            <div class="piece-cell">
+              <div class="image-container">
+                <img alt="Exemplo de Carta de Território" src="./assets/shape-triangle.png" class="shape-container shape3">
+                <label for="card-territory" style="align-self: stretch; margin-left: 1px; width: auto;"><small class="comment">e.g:</small> triângulo</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h1 class="title" data-level="1">Cartas Coringa</h1>
+      <div>
+        <hr />
+        <p>
+          As <b>Cartas Coringa</b> funcionam em conjunto com as cartas de territórios para realizar as trocas de cartas por tropas, facilitando a realização da troca uma vez que possui todos os símbolos.
+        </p>
+        <div class="pieces" style="padding-bottom: unset;">
+          <div class="piece-row" style="gap: 0.5em;">
+            <div class="piece-cell">
+              <div class="image-container">
+                <img alt="Exemplo de Carta Coringa" id="joker1" src="./assets/card-joker2.JPG">
+                <label for="card-territory" style="align-self: stretch; margin-left: 1px; width: auto;"><small class="comment">e.g:</small> coginga vai</label>
+              </div>
+            </div>
+            <div class="piece-cell">
+              <div class="image-container">
+                <img alt="Exemplo de Carta Coringa" id="joker2" src="./assets/card-joker1.JPG">
+                <label for="card-territory" style="align-self: stretch; margin-left: 1px; width: auto;"><small class="comment">e.g:</small> coginga vem</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center">
+          <span class="comment">Que eu lembre, até ontem,</span> só existem dois coringas!
+        </p>
+        <p>
+          Essa informção tem utilizadade prática, se você tem um coringa na mão e outras pessoas disserem que também o tem, <span class="comment">principalmente em tom de ameaça</span>, você pode facilmente deduzir quem é a <b>MULA BLEFANTE</b>! <b class="chat hash-tag">#NãoConfieEmNinguém</b>
+        </p>
+
       </div>
 
     </section>
@@ -663,7 +782,6 @@
     </section>
   </main>
   <footer class="portrait">
-
     <div class="header">
       <div class="icon">
         <img src="./assets/panzer2.gif" alt="panzer" />
