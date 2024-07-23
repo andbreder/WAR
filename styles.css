@@ -90,38 +90,39 @@ html {
 
 .chat {
   color: var(--color_chat);
+  opacity: 1 !important;
 }
 
 .color-blue {
-  color: var(--color_blue_flat);
+  color: var(--color_blue_flat) !important;
 }
 
 .color-gray {
-  color: var(--color_gray_flat);
+  color: var(--color_gray_flat) !important;
 }
 
 .color-green {
-  color: var(--color_green_flat);
+  color: var(--color_green_flat) !important;
 }
 
 .color-orange {
-  color: var(--color_orange_flat);
+  color: var(--color_orange_flat) !important;
 }
 
 .color-pink {
-  color: var(--color_pink_flat);
+  color: var(--color_pink_flat) !important;
 }
 
 .color-red {
-  color: var(--color_red_flat);
+  color: var(--color_red_flat) !important;
 }
 
 .color-yellow {
-  color: var(--color_yellow_flat);
+  color: var(--color_yellow_flat) !important;
 }
 
 .comment {
-  opacity: 0.5;
+  color: #959595 !important;
 }
 
 .display-none {
@@ -330,10 +331,10 @@ html {
     background-color: var(--color_blue_flat);
     cursor: pointer;
     display: flex;
-    font-size: var(--font_size_subtitle);
+    font-size: 1.25rem;
     font-weight: bold;
     justify-content: space-between;
-    padding: var(--menu_chapters_padding);
+    padding: 1em 0.25em 1em 1em;
   }
 
   #menu-chapters-containers>.options>.option:not(:first-of-type) {
@@ -2034,15 +2035,295 @@ html {
   }
 
 
+  .-exchange-ritual,
+  .cards-exchange-ritual * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .cards-exchange-ritual {
+    --cardsGap: 1rem;
+    counter-reset: cardCount;
+    display: flex;
+    flex-direction: column;
+    gap: var(--cardsGap);
+    list-style: none;
+    margin: 1em 0;
+  }
+
+  .cards-exchange-ritual .step {
+    --anim_timing: 14s;
+    --step_height: 6rem;
+    --step_pad: 1em;
+    align-items: center;
+    background: #FFFFFF05;
+    border: 2px solid transparent;
+    border-bottom: unset;
+    counter-increment: cardCount;
+    display: flex;
+    gap: var(--step_pad);
+    height: var(--step_height);
+    overflow: hidden;
+    padding-right: var(--step_pad);
+    position: relative;
+    transition: border-color 500ms;
+  }
+
+  .cards-exchange-ritual .step::before {
+    align-items: center;
+    background-color: #FF3D00;
+    color: white;
+    content: counter(cardCount);
+    display: flex;
+    font-size: 2em;
+    font-weight: bolder;
+    height: 100%;
+    margin-right: calc(-1 * var(--labelOffset));
+    padding-inline: 0.5em;
+    transform: translateY(calc(-1 * var(--labelOffset)));
+    z-index: var(--z_index_main);
+  }
+
+  .cards-exchange-ritual .step>img {
+    height: calc(var(--step_height) * 1.5);
+    left: 1.5rem;
+    opacity: 0.1;
+    position: absolute;
+    top: -1.5rem;
+  }
+
+
+  .cards-exchange-ritual .step>div {
+    font-size: 1.1em;
+    text-align: justify;
+  }
 
 
 
 
 
+  .cards-exchange-ritual .exchange-info {
+    margin-top: -1em;
+    position: relative;
+  }
+
+  .cards-exchange-ritual .exchange-info .more {
+    background-color: var(--color_yellow_flat);
+    color: black;
+    font-size: 1.5em;
+    font-weight: bolder;
+    position: absolute;
+    right: 0;
+    top: -1em;
+    font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 200, "opsz" 48;
+    text-shadow: none;
+    transition: top 500ms, font-size 500ms;
+  }
+
+
+  .cards-exchange-ritual .exchange-info>div {
+    border: 2px solid transparent;
+    border-top: unset;
+    height: 0;
+    text-align: justify;
+    overflow: hidden;
+    padding: 0;
+    transition: all 500ms;
+  }
+
+  .cards-exchange-ritual .exchange-info ul {
+    list-style-type: none;
+    padding: 1em 0 0 1em;
+  }
 
 
 
 
+
+  .cards-exchange-ritual .step.open {
+    background: #FF3D00;
+    color: transparent;
+    text-shadow: none;
+    border: 2px solid white;
+    border-bottom: unset;
+  }
+
+  .cards-exchange-ritual .step.open>img {
+    opacity: 1;
+    left: 35%;
+    transform: scale(2);
+  }
+
+  .cards-exchange-ritual .exchange-info.open .more {
+    font-size: 3em;
+  }
+
+  .cards-exchange-ritual .exchange-info.open>div {
+    background-color: #FFFFFF05;
+    border-color: white;
+    border-top: unset;
+    height: max-content;
+    padding: 1em;
+  }
+
+
+
+
+  .cards-ui-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cards-ui,
+  .cards-ui * {
+    transition: all 300ms;
+  }
+
+  .cards-ui {
+    --min-h: 8rem;
+    align-items: center;
+    background-color: #FFFFFF05;
+    display: flex;
+    position: relative;
+    min-height: var(--min-h);
+  }
+
+  .cards-ui.showing {
+    background-color: unset;
+    padding-bottom: calc(var(--min-h)/2);
+    padding-top: calc(var(--min-h)/2);
+  }
+
+  .cards-ui .order {
+    align-items: center;
+    background-color: rgba(var(--color_green_flat_rgb), 0.3);
+    border-radius: 100%;
+    display: flex;
+    font-family: var(--font_family_stylish);
+    font-size: 2em;
+    height: 1.5em;
+    justify-items: center;
+    left: -0.25em;
+    position: absolute;
+    top: 0;
+    width: 1.5em;
+  }
+
+  .cards-ui .order * {
+    margin: auto;
+    text-align: center;
+  }
+
+  .cards-ui.showing .order {
+    background-color: var(--color_green_flat);
+    font-size: 2.4em;
+    height: 1.3em;
+    width: 1.3em;
+  }
+
+
+  .cards-ui>img {
+    position: absolute;
+    height: var(--min-h);
+    z-index: var(--z_index_main);
+  }
+
+  .cards-ui.showing>img {}
+
+  .cards-ui>img:nth-of-type(1) {
+    clip-path: inset(0 0 50% 0);
+    top: 0;
+  }
+
+  .cards-ui.showing>img:nth-of-type(1) {}
+
+  .cards-ui>img:nth-of-type(2) {
+    bottom: 0;
+    clip-path: inset(49.8% 0 0 0);
+  }
+
+  .cards-ui.showing>img:nth-of-type(2) {}
+
+
+  .cards-ui>.content {
+    display: flex;
+    flex-direction: column;
+    padding-left: calc(var(--min-h) + .5rem);
+    width: 100%;
+  }
+
+  .cards-ui.showing>.content {
+    background-color: #FFFFFF05;
+    height: var(--min-h);
+    padding: 0;
+  }
+
+  .cards-ui>.content>hr {
+    width: 0;
+  }
+
+  .cards-ui.showing>.content>hr {
+    background-color: var(--color_yellow_flat);
+    width: 100%;
+  }
+
+  .cards-ui.showing>.content>div {
+    align-items: center;
+    display: flex;
+    height: var(--min-h);
+    padding: 0 1rem;
+  }
+
+  .cards-ui>.content .stay {
+    color: var(--color_yellow_flat);
+    font-size: 1.2em;
+    font-weight: 900;
+  }
+
+  .cards-ui.showing>.content .stay {
+    font-size: 1em;
+  }
+
+  .cards-ui>.content>div>div *:not(.stay) {
+    color: transparent;
+    font-size: 0;
+    text-shadow: none;
+  }
+
+  .cards-ui.showing>.content>div>div *:not(.stay) {
+    color: unset;
+    font-size: unset;
+    text-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
+  }
+
+  .cards-ui>.content .not-to-be,
+  .cards-ui>.content .not-to-be * {
+    transition: all 100ms !important;
+  }
+
+  .cards-ui>.content .not-to-be {
+    background-color: rgba(var(--color_red_flat_rgb), 0.2);
+    display: flex;
+    gap: 1.5em;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cards-ui.showing>.content .not-to-be {
+    margin-top: 0.5em;
+    padding: 0.5em;
+  }
+
+  .cards-ui>.content .not-to-be>div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cards-ui.showing>.content .not-to-be span {
+    font-size: 0.8em !important;
+  }
 
 
 

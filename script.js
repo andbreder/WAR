@@ -1,3 +1,6 @@
+let exhangeSteps;
+let exhangeInfos;
+
 document.addEventListener("DOMContentLoaded", function () {
   const divMenuChapters = document.getElementById("menu-chapters-containers");
   const btnMenuChapters = document.getElementById("menu-chapters");
@@ -225,6 +228,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const tanks_chat = document.getElementById("tanks-chat");
   tanks_chat.innerHTML += tanks_chat.innerHTML;
 
+  const cardsUI = document.getElementsByClassName("cards-ui");
+  if (cardsUI) {
+    for (let i = 0; i < cardsUI.length; i++) {
+      cardsUI[i].addEventListener("click", () => {
+        if (cardsUI[i].classList.contains("showing"))
+          cardsUI[i].classList.remove("showing")
+        else
+          cardsUI[i].classList.add("showing")
+      });
+    }
+  }
+
   getGit();
 });
 
@@ -238,10 +253,8 @@ function scrollMeTo(id) {
 }
 
 async function getGit() {
-
   const github = document.getElementById("github");
   if (github) {
-
     var apiGitUser, apiGitRepo, apiGitBranches;
 
     apiGitUser = await fetch("https://api.github.com/users/andbreder").then(resp => resp.json());
