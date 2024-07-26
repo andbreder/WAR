@@ -12,6 +12,7 @@
 
   --color_gray_flat: #4a4a4a;
   --color_gray_flat_rgb: 74, 74, 74;
+  --color_green_dark: #03b04b;
   --color_green_flat: #00C853;
   --color_green_flat_rgb: 0, 200, 83;
   --color_orange_flat: #FF6F00;
@@ -70,7 +71,7 @@ html {
   font-weight: 400;
   max-width: 100vw !important;
   overflow-x: hidden;
-  text-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.5);
   width: 100vw !important;
 }
 
@@ -81,11 +82,26 @@ html {
 .alert {
   background-color: var(--color_blue_darker);
   border-radius: 0.5em;
-  padding: 1em;
+  padding: 1rem;
+}
+
+h1.alert {
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+
+
+.alert.alert-green {
+  background-color: var(--color_green_dark);
 }
 
 .alert.alert-red {
   background-color: var(--color_red_flat);
+}
+
+.alert.alert-yellow {
+  background-color: var(--color_yellow_flat);
+  color: black;
 }
 
 .chat {
@@ -2223,7 +2239,6 @@ html {
     width: 1.3em;
   }
 
-
   .cards-ui>img {
     position: absolute;
     height: var(--min-h);
@@ -2245,7 +2260,6 @@ html {
   }
 
   .cards-ui.showing>img:nth-of-type(2) {}
-
 
   .cards-ui>.content {
     transition: background-color 1000ms;
@@ -2334,6 +2348,49 @@ html {
 
 
 
+  .exchange-card-container {
+    --exchange-c-height: 40vw;
+    display: flex;
+    flex-direction: row;
+    height: var(--exchange-c-height);
+    justify-content: space-between;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+
+  .exchange-card-container img {
+    --exchange-c-border-size: 3px;
+    background-color: var(--color_green_flat);
+    border: var(--exchange-c-border-size) solid var(--color_green_flat);
+    box-shadow: 0 0 1em var(--color_green_flat);
+  }
+  
+  .exchange-card-container img.joker {
+    animation: exchange-card-joker 9s linear infinite;
+    height: calc(var(--exchange-c-height) - var(--exchange-c-border-size) * 2);
+    left: 0;
+    opacity: 0;
+    position: absolute;
+  }
+
+  @keyframes exchange-card-joker {
+    0% { left: 0; opacity: 0; }
+    5% { left: 0; opacity: 1; }
+    10% { left: 0; opacity: 1; }
+    20% { left: 0; opacity: 0; }
+    30% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 0; }
+    35% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 1; }
+    40% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 1; }
+    50% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 0; }
+    60% { left: unset; right: 0; opacity: 0; }
+    65% { left: unset; right: 0; opacity: 1; }
+    70% { left: unset; right: 0; opacity: 1; }
+    80% { left: unset; right: 0; opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+
+  
 
 
 
