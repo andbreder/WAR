@@ -90,7 +90,6 @@ h1.alert {
   font-weight: 900;
 }
 
-
 .alert.alert-green {
   background-color: var(--color_green_dark);
 }
@@ -139,6 +138,21 @@ h1.alert {
 
 .comment {
   color: #959595 !important;
+}
+
+.quote {
+  background-color: #FFFFFF05;
+  border-left: 3px solid #95959560;
+  color: #959595;
+  padding: 0.5em 1em;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.quote>.explanations {
+  display: block;
+  font-weight: 900;
+  padding-bottom: 0.5em;
 }
 
 .display-none {
@@ -636,6 +650,7 @@ h1.alert {
   }
 
   main .image-container {
+    --border-width: 0.5em;
     align-items: self-end;
     display: flex;
     flex-direction: column;
@@ -643,7 +658,6 @@ h1.alert {
   }
 
   main .image-container>img {
-    --border-width: 0.5em;
     border-color: black;
     border-style: solid;
     border-width: var(--border-width);
@@ -656,6 +670,20 @@ h1.alert {
     padding: 0.5em 1em;
     width: fit-content;
     z-index: var(--z_index_main);
+  }
+
+  main .image-container>.cliped {
+    border-color: black;
+    border-style: solid;
+    border-width: var(--border-width);
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    width: calc(100% - var(--border-width) *2);
+  }
+
+  main .image-container>.cliped>img {
+    position: absolute;
   }
 
   #war-continents {
@@ -864,9 +892,6 @@ h1.alert {
     margin-left: 1em;
   }
 
-
-
-
   main .image-container.frontiers {
     position: relative;
     overflow: hidden;
@@ -1038,7 +1063,6 @@ h1.alert {
     position: relative;
   }
 
-
   .frontiers-grid>div.euro-fran,
   .frontiers-grid>div.euro-polo,
   .frontiers-grid>div.asia-orie,
@@ -1047,7 +1071,6 @@ h1.alert {
     opacity: 0.2;
     transition: opacity 3s;
   }
-
 
   .frontiers-grid>div.euro-fran,
   .frontiers-grid>div.euro-polo {
@@ -1327,7 +1350,6 @@ h1.alert {
     }
   }
 
-
   .frontiers-grid>div.afri-egit>.material-symbols-sharp:nth-of-type(1) {
     animation-name: frontier_arrow_left;
     left: -.65em;
@@ -1358,8 +1380,6 @@ h1.alert {
     bottom: -0.65em;
     left: calc(50% -1em);
   }
-
-
 
   .frontiers-list-container {
     background-color: #ffffff07;
@@ -1504,7 +1524,6 @@ h1.alert {
     }
   }
 
-
   #general-table>img {
     animation: general-table 10s ease-out infinite;
     object-position: -50vw -60vh;
@@ -1612,10 +1631,6 @@ h1.alert {
     padding: 0.75em 0.25em 0.75em 0.25em;
   }
 
-
-
-
-
   .slide-track {
     gap: 0.5rem;
     animation: granades-history-scroll var(--granade_fable_duration) linear infinite;
@@ -1669,10 +1684,6 @@ h1.alert {
   .slide-track>span:nth-of-type(6) {
     border-color: var(--color_red_flat);
   }
-
-
-
-
 
   footer>.header {
     align-items: center;
@@ -1869,9 +1880,6 @@ h1.alert {
     animation-delay: 0.5s !important;
   }
 
-
-
-
   .sun-tzu {
     border-bottom: 3px solid var(--color_blue_darker_plus);
     bottom: 0;
@@ -2050,7 +2058,6 @@ h1.alert {
     }
   }
 
-
   .-exchange-ritual,
   .cards-exchange-ritual * {
     margin: 0;
@@ -2109,15 +2116,10 @@ h1.alert {
     top: -1.5rem;
   }
 
-
   .cards-exchange-ritual .step>div {
     font-size: 1.1em;
     text-align: justify;
   }
-
-
-
-
 
   .cards-exchange-ritual .exchange-info {
     margin-top: -1em;
@@ -2137,7 +2139,6 @@ h1.alert {
     transition: top 500ms, font-size 500ms;
   }
 
-
   .cards-exchange-ritual .exchange-info>div {
     border: 2px solid transparent;
     border-top: unset;
@@ -2152,10 +2153,6 @@ h1.alert {
     list-style-type: none;
     padding: 1em 0 0 1em;
   }
-
-
-
-
 
   .cards-exchange-ritual .step.open {
     background: #FF3D00;
@@ -2182,9 +2179,6 @@ h1.alert {
     height: max-content;
     padding: 1em;
   }
-
-
-
 
   .cards-ui-container {
     display: flex;
@@ -2345,9 +2339,6 @@ h1.alert {
     font-size: 0.8em !important;
   }
 
-
-
-
   .exchange-card-container {
     --exchange-c-height: 40vw;
     display: flex;
@@ -2364,7 +2355,7 @@ h1.alert {
     border: var(--exchange-c-border-size) solid var(--color_green_flat);
     box-shadow: 0 0 1em var(--color_green_flat);
   }
-  
+
   .exchange-card-container img.joker {
     animation: exchange-card-joker 9s linear infinite;
     height: calc(var(--exchange-c-height) - var(--exchange-c-border-size) * 2);
@@ -2374,23 +2365,204 @@ h1.alert {
   }
 
   @keyframes exchange-card-joker {
-    0% { left: 0; opacity: 0; }
-    5% { left: 0; opacity: 1; }
-    10% { left: 0; opacity: 1; }
-    20% { left: 0; opacity: 0; }
-    30% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 0; }
-    35% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 1; }
-    40% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 1; }
-    50% { left: calc(50% - (var(--exchange-c-height) / 2) + 2rem); opacity: 0; }
-    60% { left: unset; right: 0; opacity: 0; }
-    65% { left: unset; right: 0; opacity: 1; }
-    70% { left: unset; right: 0; opacity: 1; }
-    80% { left: unset; right: 0; opacity: 0; }
-    100% { opacity: 0; }
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+
+    5% {
+      left: 0;
+      opacity: 1;
+    }
+
+    10% {
+      left: 0;
+      opacity: 1;
+    }
+
+    20% {
+      left: 0;
+      opacity: 0;
+    }
+
+    30% {
+      left: calc(50% - (var(--exchange-c-height) / 2) + 2rem);
+      opacity: 0;
+    }
+
+    35% {
+      left: calc(50% - (var(--exchange-c-height) / 2) + 2rem);
+      opacity: 1;
+    }
+
+    40% {
+      left: calc(50% - (var(--exchange-c-height) / 2) + 2rem);
+      opacity: 1;
+    }
+
+    50% {
+      left: calc(50% - (var(--exchange-c-height) / 2) + 2rem);
+      opacity: 0;
+    }
+
+    60% {
+      left: unset;
+      right: 0;
+      opacity: 0;
+    }
+
+    65% {
+      left: unset;
+      right: 0;
+      opacity: 1;
+    }
+
+    70% {
+      left: unset;
+      right: 0;
+      opacity: 1;
+    }
+
+    80% {
+      left: unset;
+      right: 0;
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
   }
 
 
-  
+
+
+
+  .display-dice {
+    --size: 17vh;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 1em 0;
+  }
+
+  .display-dice .image-container {
+    width: fit-content;
+  }
+
+  .display-dice .image-container .cliped {
+    height: var(--size);
+    transition: all 200ms;
+    width: var(--size);
+  }
+
+  .display-dice .image-container label {
+    padding: 0.5em 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .display-dice .image-container .cliped img {
+    height: 80vh;
+    left: -012.5vh;
+    top: -10.7vh;
+    transition: all 100ms;
+  }
+
+  .display-dice .image-container .cliped#dices-red img {
+    background-color: #FE000030;
+  }
+
+  .display-dice .image-container .cliped#dices-yellow img {
+    background-color: #FFB40030;
+  }
+
+  .dice-title {
+    align-items: center;
+    border-bottom: 0.25em solid #FE0000;
+    display: flex;
+    font-size: 1.5em;
+    gap: 0.5em;
+    justify-content: center;
+    margin-left: -1em;
+    padding-left: 0.5em;
+    text-align: center;
+  }
+
+  .dice-title.yellow {
+    border-bottom: 0.25em solid #FFB400;
+  }
+
+
+
+  .dispute {
+    margin: 1em 0;
+  }
+
+  .dispute .compare {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2em;
+    padding: 0 2em;
+    position: relative;
+    z-index: var(--z_index_main);
+  }
+
+  .dispute .compare .comp-dices {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .dispute .compare .comp-dices>div {
+    --size: 8vw;
+    height: var(--size);
+    overflow: hidden;
+    position: relative;
+    width: var(--size);
+  }
+
+  .dispute .compare .comp-dices>div img {
+    position: absolute;
+    left: -80%;
+    top: -70%;
+    height: 40vw;
+  }
+
+  .dispute .compare .summary {
+    font-size: 5em;
+    font-weight: 900;
+    line-height: 1em;
+    text-align: center;
+    -webkit-text-stroke: 4px black;
+    text-stroke: 4px black;
+  }
+  .dispute .compare .summary > span {
+    color: #C6FF00;
+    font-family: var(--font_family_stylish);
+  }
+
+
+
+  .cliped.dispute-img {
+    height: 20vh;
+  }
+
+  .cliped.dispute-img>img {
+    top: -70%;
+    width: 100%;
+  }
+
+  .cliped.dispute-img>img.dispute-10x11 {
+    top: -25%;
+  }
+
+
+
+
+
+
+
 
 
 

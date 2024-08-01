@@ -240,8 +240,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  setInterval(() => shuffleDice(document.getElementById("dices-red"), "#FE0000"), 3000);
+  setInterval(() => shuffleDice(document.getElementById("dices-yellow"), "#FFB400"), 3050);
+
   getGit();
+
 });
+
+const positionsDicesCol = ["-012.5vh", "-034.4vh", "-056.2vh", "-078.0vh", "-099.2vh", "-121.0vh", "-142.7vh", "-164.6vh"];
+const positionsDicesRow = ["-10.7vh", "-31.7vh", "-53.7vh"];
+
+function shuffleDice(container, bg) {
+
+  const dices = container.getElementsByTagName("img")[0];
+
+  container.style.background = bg;
+
+  setTimeout(() => {
+    dices.style.opacity = 0;
+    dices.style.left = positionsDicesCol[Math.floor(Math.random() * positionsDicesCol.length)];
+    dices.style.top = positionsDicesRow[Math.floor(Math.random() * positionsDicesRow.length)];
+    setTimeout(() => {
+      container.style.background = bg + "30";
+      dices.style.opacity = 1;
+    }, 50);
+  }, 50);
+
+}
 
 function scrollMeTo(id) {
   var element = document.getElementById(id);

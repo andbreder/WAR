@@ -81,6 +81,7 @@
   </header>
   <hr class="portrait" />
   <main id="id-main" class="portrait">
+    <!-- APRESENTAÇÕES -->
     <section>
       <h1 class="title">Apresentações</h1>
       <div>
@@ -130,6 +131,7 @@
         </p>
       </div>
     </section>
+    <!-- COMPONENTES DO JOGO -->
     <section>
       <h1 class="title">Componentes do Jogo</h1>
       <div>
@@ -138,6 +140,7 @@
           As descrições a seguir são dos <b>objetos que existem no jogo</b> e que você precisa para jogar, suas quantidades, cores, formatos, etc.
         </p>
       </div>
+
       <h1 class="title" data-level="1">Mapa</h1>
       <div>
         <hr />
@@ -743,18 +746,15 @@
             </div>
           </div>
         </div>
-
         <p>
           Cada jogador pode acumular cartas-território e coringas para utilizar no melhor momento, mas não pode ultrapassar o total de cinco, que é o número máximo de retenção.
         </p>
         <p class="alert alert-red text-center">
           Apenas dominando territórios, <b>5 CARTAS</b> é o número máximo que você pode reter em mãos!
         </p>
-          
         <p>
           <span class="chat">Ah, mas por que cinco?</span> Cinco é o número máximo pois é certeza que com cinco cartas você possuí uma combinação válida para trocar, assim impedindo o acúmulo de cartas apenas dominando territórios.
         </p>
-
       </div>
       <h1 class="title" data-level="2">Cartas Coringa</h1>
       <div>
@@ -946,18 +946,15 @@
             </div>
           </div>
         </div>
-
         <p>
-          Pois bem, agora você tem um quantidade substancial de tropas e, obviamente vai atacar alguém<span>, afinal esse jogo se chama WAR e não PEACE</span>! E atacando, como já disse antes, você vai ganhar ainda mais cartas, as  situações a seguir vão descrever todas as possibilidades que você pode se deparar durante o jogo e qual a ação deve ser tomada em cada cenário.
+          Pois bem, agora você tem um quantidade substancial de tropas e, obviamente vai atacar alguém<span>, afinal esse jogo se chama WAR e não PEACE</span>! E atacando, como já disse antes, você vai ganhar ainda mais cartas, as situações a seguir vão descrever todas as possibilidades que você pode se deparar durante o jogo e qual a ação deve ser tomada em cada cenário.
         </p>
-
-        <h1 class="alert alert-yellow text-center">
-          POSSO TROCAR<span class="comment"> se quiser</span>
-        </h1>
+        <div class="alert alert-yellow text-center" style="align-items: center; display: flex; font-weight: 900; gap: .5em; justify-content: center;">
+          <span style="font-size: 1.7em;">POSSO TROCAR</span><span style="padding-top: 3px;"> SE QUISER</span>
+        </div>
         <p>
           Nas seguintes situações você possui a quantidade necessária de cartas para realizar uma troca, mas PODE escolher não trocar<span class="comment">, simples assim</span>.
         </p>
-
         <div class="alert alert-green text-center" style="align-items: center; display: flex; font-weight: 900; gap: .5em; justify-content: center;">
           <span style="padding-top: 2px;">TENHO 3 CARTAS DE</span><span style="font-size: 1.5em;">SÍMBOLOS IGUAIS</span>
         </div>
@@ -988,7 +985,6 @@
         <p>
           <span class="color-yellow">Coringa é só mais uma carta</span> e apenas um símbolo dela pode ser considerado na conta com as outras na troca
         </p>
-
         <p class="alert alert-green text-center" style="align-items: center; display: flex; font-weight: 900; gap: .5em; justify-content: center;">
           <span style="padding-top: 2px;">TENHO 3 CARTAS DE </span><span style="font-size: 1.5em;">SÍMBOLOS DIFERENTES</span>
         </p>
@@ -996,7 +992,7 @@
           Exemplo de Troca 2
         </p>
         <p style="margin-left: 1em;">
-          <span class="comment">e.g:</span> Tenho três cartas com símbolos diferentes! 
+          <span class="comment">e.g:</span> Tenho três cartas com símbolos diferentes!
         </p>
         <div class="exchange-card-container">
           <img src="./assets/card-territory-argentina.jpg">
@@ -1025,14 +1021,12 @@
         <p>
           Existem apenas dois coringas no meu baralho! Usa-los numa troca deve ser uma estratégia de exceção, o mais vantajoso é usar apenas quando necessário, por conta da característica única dessa carta que se vale de qualquer símbolo necessário! <span class="chat">Lembre que quando utilizada a carta volta para o baralho!</span>
         </p>
-
-        <h1 class="alert alert-yellow text-center">
-          DEVO TROCAR<span class="comment"> pra continuar</span>
-        </h1>
+        <div class="alert alert-yellow text-center" style="align-items: center; display: flex; font-weight: 900; gap: .5em; justify-content: center;">
+          <span style="font-size: 1.7em;">DEVO TROCAR</span><span style="padding-top: 3px;"> PRA CONTINUAR</span>
+        </div>
         <p>
           Nas seguintes situações você atingiu a quantidade máxima de cartas-território que pode possuir e é OBRIGADO a trocar, a famosa <b>TROCA OBRIGATÓRIA</b>! <span class="comment">As situações diferem um pouco quando se trata da obrigatoriedade da troca, então atenção ao temas</span>.
         </p>
-        
         <div class="alert alert-green text-center" style="align-items: center; display: flex; font-weight: 900; gap: .5em; justify-content: center;">
           <span style="font-size: 1.5em;">TENHO 5 CARTAS</span>
         </div>
@@ -1051,7 +1045,6 @@
         <p style="margin-left: 1em;">
           <span class="comment">e.g:</span> Iniciei minha rodada com uma carta, eliminei um jogador, recebi as três cartas que ele possuia e mais uma carta por ter dominado um território nessa rodada. Na minha jogada seguinte, <b>iniciando com as cinco cartas</b>, sou <b class="color-red">obrigado a trocar</b> três delas na primeira etapa - disposição de tropas!
         </p>
-        
         <div class="alert alert-green text-center" style="align-items: center; display: flex; font-weight: 900; gap: .5em; justify-content: center;">
           <span style="font-size: 1.5em;">TENHO MAIS QUE 5 CARTAS</span>
         </div>
@@ -1070,12 +1063,152 @@
         <p style="margin-left: 1em;">
           <span class="comment">e.g:</span> Iniciei minha rodada com quatro cartas, eliminei um jogador, recebi as cinco cartas que ele possuia e mais uma carta por ter dominado um território nessa rodada. Na minha jogada seguinte, <b>iniciando com as onze cartas</b>, sou <b class="color-red">obrigado a trocar</b> três delas na primeira etapa - disposição de tropas! Continuo e domino um território, ganho outra carta, totalizando nove, na proxima rodada e seguintes sou <b class="color-red">obrigado a trocar constantemente</b> até possuir quatro ou menos cartas!
         </p>
-
         <p class="alert alert-red text-center">
-          Sempre e enquanto possuir <b>CINCO OU MAIS CARTAS</b> você é obrigado a trocar três delas na etapa de distribuição, <b>até possuir menos que cinco</b>!
+          Sempre e enquanto possuir <b>CINCO OU MAIS CARTAS</b> você é OBRIGADO a trocar três delas na etapa de distribuição, <b>até possuir menos que cinco</b>!
+        </p>
+      </div>
+
+      <h1 class="title" data-level="1">Dados</h1>
+      <div>
+        <hr />
+        <p>
+          Existem dois tipos de dados a serem usados no jogo, independente das suas cores ou do número de faces que tenham, eles são usados para cumprir duas funções específicas: <b>ATACAR</b> e <b>DEFENDER</b>.
+        </p>
+        <p class="chat">
+          Aqui na minha versão tenho seis dados comuns de seis faces (marcação de um a seis), que vieram com o jogo, são <b>TRÊS VERMELHOS</b> e <b>TRÊS AMARELOS</b>.
+        </p>
+        <div class="display-dice">
+          <div class="image-container">
+            <div class="cliped" id="dices-red">
+              <img alt="dados vermelhos" class="multi-dices" src="./assets/dices-red.png">
+            </div>
+            <label for="war-map"><small class="comment">e.g:</small> os vermelhos</label>
+          </div>
+          <div>
+            <div class="dice-title">
+              <b>DADOS DE ATAQUE</b>
+              <span class="material-symbols-outlined">swords</span>
+            </div>
+            <p style="padding-right: 1em;">
+              São a OFENSIVA, para cada tropa que está INVADINDO um novo território.
+              <span class="comment">
+                Atacar é sempre um risco, porque a defesa sempre tem vantagem, mas "não atacar" pode ser trágico, visto que você não receberá novas cartas!
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="display-dice">
+          <div class="image-container">
+            <div class="cliped" id="dices-yellow">
+              <img alt="dados amarelos" class="multi-dices" src="./assets/dices-yellow.png">
+            </div>
+            <label for="war-map"><small class="comment">e.g:</small> os amarelos</label>
+          </div>
+          <div>
+            <div class="dice-title yellow">
+              <b>DADOS DE DEFESA</b>
+              <span class="material-symbols-outlined">security</span>
+            </div>
+            <p style="padding-right: 1em;">
+              São a RESISTÊNCIA, para cada tropa que está PROTEGENDO seu território de um ataque.
+              <span class="comment">
+                Defender é uma estratégia que requer atenção, disponha suas tropas nas fronteiras inimigas, não no interrior do seu próprio território.
+              </span>
+            </p>
+          </div>
+        </div>
+        <p>
+          Os dados são utilizados na ETAPA DE ATAQUE, na vez do jogador se ele assim escolher, uma vez que:
+        </p>
+        <h1 class="alert alert-red text-center">
+          ATACAR É OPCIONAL!
+        </h1>
+        <p>
+          Então <span class="comment">"bora atacar"</span>, se ele assim decidir, os dados, <b>sempre na máxima quantidade possível!</b>, são separados de acordo com a quantidade de tropas nos territórios atacando e defendendo.
+        <p class="chat">
+          No nosso caso o máximo é três em cada ataque, porque só tenho três dados de cada cor!
+        </p>
+        <p>
+          Podendo repetir o ataque quantas vezes quiser ou puder (enquanto tiver tropas e tempo na rodada).
+        </p>
+        <p>
+          <span class="color-red">Aqui mais uma mudança significativa que tenho na <b>Regra Original do WAR!</b></span> Quem ataca ou defende um território com mais tropas SEMPRE VAI VENCER!
+        </p>
+        <p class="quote">
+          <span class="explanations">Explicações<span style="opacity: 0.5;">, só historinha, se quiser pode pular</span></span>
+          Na Regra Original do WAR, mesmo que você ataque com mais tropas, você necessariamente deve "derrotar" as tropas inimigas no território atacado, tirando um número maior no dado na comparação, <b>ATAQUExDEFESA</b>, o que pode ser muito difícil de acontecer. A mudança aqui é uma inspiração no jogo <b>Yu-Gi-Oh!</b>, permitindo você "atacar o tabuleiro". Na original, com três tropas no ataque e uma na defesa (3x1), a comparação é feita uma a uma, rolando um dado de ataque e um de defesa de cada vez, e o <b>ataque vence somente quando um dado entregar um valor maior que o dado da defesa</b>; Na regra aqui a diferença é justamente a aplicação da chamada: <b class="color-green">VANTAGEM BASEADA NO CONTINGENTE</b>, nesse mesmo caso (3x1), o atacante rola seus três dados e o dado solitário da defesa - dando chance para que a defesa consiga eliminar ao menos uma tropa atacante - mesmo assim, independente de que a defesa vença essa disputa, <b style="background-color: #FF000030;">por
+            atacar com mais tropas, o atacante SEMPRE dominará o território</b>. No caso inverso, <b style="background-color: #FFFF0030;">caso o atacante disponha de menos tropas que o contingente do defensor, o atacante NUNCA vencerá a disputa!</b> O ponto de atenção é que essas disputas acontecem na máxima quantidade de dados da minha versão, por enquanto três, por isso que dá certo! Então, imaginemos o seguinte cenário com mais que três tropas e disputas 3x3 nos dados na seguinte ordem (sendo <span class="color-red">ATAQUE</span>x<span class="color-yellow">DEFESA</span>): <span class="color-red">5</span>x<span class="color-yellow">5</span> > ataque perde 2 > <span class="color-red">3</span>x<span class="color-yellow">4</span> > ataque perde 2 > <span class="color-red">1</span>x<span class="color-yellow">3</span>; terminando assim, "o ataque perdeu". É melhor que o atacante desista e deixe seu território com duas tropas, do que continuar e ter a certeza de perder essa disputa, a
+          tropa restante e futuramente o território, porque o deixou com apenas uma tropa e todos os jogadores aqui são maliciosos e altamente vingativos! 🍍
+        </p>
+        <p class="chat">
+          Então, no geral, atacando ou defendendo, <b>quem tem mais tropas ganha!</b> Quem deixa um território exposto vai de Vasco! E quem ataca com menos tropas que a defesa do território atacado ... é uma MULA!
+        </p>
+        <p>
+          O ataque vence quando o valor do dado é maior que o valor do dado da defesa, se for igual ou menor a defesa vence! Então atenção aqui, <span class="comment">matemática básica,</span> nos 36 possíveis resultados a defesa vence em 21.
+        </p>
+        <p>
+          A seguir alguns exemplos de disputas:
         </p>
 
+        <div class="dispute">
+          <div class="expectation">
+            <span class="color-yellow">AQUI A DEFESA JÁ PERDEU</span>, MAS, TALVEZ, LEVE UMA TROPA DE ATAQUE NO PROCESSO!
+          </div>
+          <div class="compare">
+            <div class="comp-dices">
+              <div><img src="./assets/dices-red.png"></div>
+              <div><img src="./assets/dices-red.png"></div>
+              <div><img src="./assets/dices-red.png"></div>
+            </div>
+            <div class="summary">
+              <span>3</span>x<span>1</span>
+            </div>
+            <div class="comp-dices">
+              <div><img src="./assets/dices-yellow.png"></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="image-container">
+            <div class="cliped dispute-img">
+              <img alt="disputa 3x1" class="dispute-3x1" src="./assets/war-disputa-3x1.png">
+            </div>
+            <label for="war-map"><small class="comment">e.g:</small> disputa 3x1</label>
+          </div>
+        </div>
+        <div class="dispute">
+          <div></div>
+          <div></div>
+          <div class="image-container">
+            <div class="cliped dispute-img">
+              <img alt="disputa 1x1" class="dispute-1x1" src="./assets/war-disputa-1x1.png">
+            </div>
+            <label for="war-map"><small class="comment">e.g:</small> disputa 1x1</label>
+          </div>
+        </div>
+        <div class="dispute">
+          <div></div>
+          <div></div>
+          <div class="image-container">
+            <div class="cliped dispute-img">
+              <img alt="disputa 1x2" class="dispute-1x2" src="./assets/war-disputa-1x2.png">
+            </div>
+            <label for="war-map"><small class="comment">e.g:</small> disputa 1x2</label>
+          </div>
+        </div>
       </div>
+        <div class="dispute">
+          <div>
+            <span class="color-yellow">AQUI A DEFESA JÁ PERDEU</span>, MAS, TALVEZ, LEVE UMA TROPA DE ATAQUE NO PROCESSO!
+          </div>
+          <div></div>
+          <div class="image-container">
+            <div class="cliped dispute-img">
+              <img alt="disputa 10x11" class="dispute-10x11" src="./assets/war-disputa-10x11.png">
+            </div>
+            <label for="war-map"><small class="comment">e.g:</small> disputa 10x11</label>
+          </div>
+        </div>
 
     </section>
     <section>
