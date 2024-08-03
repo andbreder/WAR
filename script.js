@@ -113,14 +113,17 @@ document.addEventListener("DOMContentLoaded", function () {
     btnMenuChapters.disabled = window.scrollY <= window.innerHeight;
   };
 
-  const preamble = document.getElementsByClassName("preamble")[0];
-  if (preamble) {
-    preamble.addEventListener("click", (e) => {
-      var synth = window.speechSynthesis;
-      var utterance = new SpeechSynthesisUtterance(preamble.ariaLabel);
-      utterance.lang = "pt-BR";
-      synth.speak(utterance);
-    });
+  const preambles = document.getElementsByClassName("preamble");
+  if (preambles && preambles.length > 0) {
+    for (let i = 0; i < preambles.length; i++) {
+      const preamble = preambles[i];
+      preamble.addEventListener("click", (e) => {
+        var synth = window.speechSynthesis;
+        var utterance = new SpeechSynthesisUtterance(preamble.ariaLabel);
+        utterance.lang = "pt-BR";
+        synth.speak(utterance);
+      });
+    }
   }
 
   const controller = document.getElementById("controller");
