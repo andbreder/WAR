@@ -80,6 +80,59 @@
     </div>
   </header>
   <hr class="portrait" />
+  <div id="calculator" style="display: none;" class="calculator portrait" role="dialog" tabindex="-1">
+    <div class="results" id="calc-res">
+      <div class="tuukk"></div>
+      <div class="xadow"></div>
+      <div class="xadow" id="xadow"></div>
+    </div>
+    <div class="tuukk2"></div>
+    <div class="container">
+      <p style="color: #C6FF00; margin: 0 0 1em 0;">Loteria WAR de Disputas</p>
+      <hr>
+      <label for="calc-atk">QTD. ATAQUE</label>
+      <div class="calc-input atk md-ripples">
+        <button type="button" id="calc-rem-atk" disabled>
+          <span class="material-symbols-sharp">
+            do_not_disturb_on
+          </span>
+        </button>
+        <input type="number" id="calc-atk" max="999" min="1" value="1" maxlength="3">
+        <button type="button" id="calc-add-atk">
+          <span class="material-symbols-outlined">
+            add_circle
+          </span>
+        </button>
+      </div>
+      <label for="calc-def">QTD. DEFESA</label>
+      <div class="calc-input def md-ripples">
+        <button type="button" id="calc-rem-def" disabled>
+          <span class="material-symbols-sharp">
+            do_not_disturb_on
+          </span>
+        </button>
+        <input type="number" id="calc-def" max="999" min="1" value="1" maxlength="3">
+        <button type="button" id="calc-add-def">
+          <span class="material-symbols-outlined">
+            add_circle
+          </span>
+        </button>
+      </div>
+      <hr style="margin-top: 1em;">
+      <!-- <label for="calc-ret">RESULTADO</label>
+      <div id="calc-result" class="result">
+        <span class="atk lost">0</span>
+        <span style="font-size: 2rem; line-height: 2em; opacity: 0.5;">x</span>
+        <span class="def lost">0</span>
+      </div> -->
+      <button type="button" id="sorteadeiro" class="calc-input ret md-ripples">
+        <p>SORTEAR</p>
+      </button>
+    </div>
+    <div id="calc-close" class="md-ripples" style="margin-top: 0.5em; opacity: 0.25; width: 100%;">
+      <p style="margin: 2rem 0; text-align: center;">CLICA EM MIM AQUI PRA FECHAR!</p>
+    </div>
+  </div>
   <main id="id-main" class="portrait">
     <!-- APRESENTAÇÕES -->
     <section>

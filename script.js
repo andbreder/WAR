@@ -1,5 +1,12 @@
+const dataComIntl = new Intl.DateTimeFormat('pt-BR', {
+  dateStyle: 'short',
+  timeStyle: 'short',
+});
+
 let exhangeSteps;
 let exhangeInfos;
+let lotteryInterval;
+let lotteryTimeout;
 
 document.addEventListener("DOMContentLoaded", function () {
   const divMenuChapters = document.getElementById("menu-chapters-containers");
@@ -246,7 +253,130 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(() => shuffleDice(document.getElementById("dices-red"), "#FE0000"), 3000);
   setInterval(() => shuffleDice(document.getElementById("dices-yellow"), "#FFB400"), 3050);
 
-  getGit();
+
+  const calculator = document.getElementById("calculator");
+  const calcClose = document.getElementById("calc-close");
+
+  document.getElementById("dice-calc").addEventListener('click', () => {
+    document.documentElement.style.overflow = "hidden";
+    calculator.removeAttribute('style');
+  });
+  calcClose.addEventListener('click', () => {
+    document.documentElement.removeAttribute('style');
+    calculator.style.display = "none";
+  });
+
+
+  const calcLuckInputAtk = document.getElementById("calc-atk");
+  const calcLuckInputDef = document.getElementById("calc-def");
+  const calcChallengeRes = document.getElementById("calc-res");
+  const calcChallengeLst = document.getElementById("xadow");
+
+  calcLuckInputAtk.addEventListener("change", (e) => InputLuckOnChange(calcLuckInputAtk, calcBtnAtkAdd, calcBtnAtkRem));
+  calcLuckInputDef.addEventListener("change", (e) => InputLuckOnChange(calcLuckInputDef, calcBtnDefAdd, calcBtnDefRem));
+
+  function InputLuckOnChange(input, btnAdd, btnRem) {
+    btnAdd.disabled = input.value >= input.max;
+    if (btnAdd.disabled) input.value = input.max;
+    btnRem.disabled = input.value <= input.min;
+    if (btnRem.disabled) input.value = input.min;
+  }
+
+  const calcBtnAtkAdd = document.getElementById("calc-add-atk");
+  const calcBtnAtkRem = document.getElementById("calc-rem-atk");
+  const calcBtnDefAdd = document.getElementById("calc-add-def");
+  const calcBtnDefRem = document.getElementById("calc-rem-def");
+
+  calcBtnAtkAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
+  calcBtnAtkRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
+  calcBtnDefAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
+  calcBtnDefRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
+
+  calcBtnAtkAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnDefAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
+  calcBtnAtkAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnDefAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
+
+  document.getElementById("sorteadeiro").addEventListener('click', () => {
+    let troopsATK = calcLuckInputAtk.value;
+    let troopsDEF = calcLuckInputDef.value;
+    let results = [];
+
+    while (troopsATK > 0 && troopsDEF > 0) {
+      results.push([RollDice(), RollDice()]);
+      if (results[results.length - 1][0] > results[results.length - 1][1])
+        troopsDEF--;
+      else
+        troopsATK--;
+
+      if (troopsDEF > 0 && troopsDEF < 4 && troopsDEF < troopsATK) {
+        troopsDEF--;
+        results.push([RollDice(), "🤡"]);
+      }
+    }
+
+    let events = "";
+    for (let i = 0; i < results.length; i++) {
+      const atk = results[i][0];
+      const def = results[i][1];
+      events +=
+        `<div>
+          <span class="${atk > def ? "win" : ""}">${atk}</span>
+          <span class="${def != "🤡" && def >= atk ? "win" : ""}">${def}</span>
+        </div>`
+    }
+
+    var result = document.createElement("div");
+    result.classList.add("result");
+    result.innerHTML =
+      `<p class="sort-date">
+        sorteado em ${dataComIntl.format(new Date(Date.now()))}
+      </p>
+      <hr />
+      <div class="content ${troopsATK > troopsDEF ? "atk" : "def"}">
+        <div class="icon atk ${troopsATK > troopsDEF ? "" : "off"}">
+          <span class="material-symbols-sharp">swords</span>
+        </div>
+        <div class="summary">
+          <div class="atk-count">
+            <b>${calcLuckInputAtk.value}</b>
+          </div>
+          <div class="survivors">
+            <b>${troopsATK}</b>
+          </div>
+          <span style="opacity: 0.5">x</span>
+          <div class="survivors">
+            <b>${troopsDEF}</b>
+          </div>
+          <div class="def-count">
+            <b>${calcLuckInputDef.value}</b>
+          </div>
+        </div>
+        <div class="icon def ${troopsDEF >= troopsATK ? "" : "off"}">
+          <span class="material-symbols-sharp">security</span>
+        </div>
+      </div>
+      <hr />
+      <p class="winner">
+        <b>${troopsATK > troopsDEF ? "ATAQUE" : "DEFESA"}</b> Venceu!
+      </p>
+      <hr />
+      <div class="events">${events}</div>`;
+
+    calcChallengeRes.insertBefore(result, calcChallengeLst);
+    calcChallengeRes.scrollTop = calcChallengeRes.scrollHeight;
+
+    calcLuckInputAtk.value = calcLuckInputAtk.min;
+    calcLuckInputAtk.dispatchEvent(CHANGE_EVENT);
+    calcLuckInputDef.value = calcLuckInputDef.min;
+    calcLuckInputDef.dispatchEvent(CHANGE_EVENT);
+  });
+
+  // getGit();
 
 });
 
@@ -254,11 +384,8 @@ const positionsDicesCol = ["-012.5vh", "-034.4vh", "-056.2vh", "-078.0vh", "-099
 const positionsDicesRow = ["-10.7vh", "-31.7vh", "-53.7vh"];
 
 function shuffleDice(container, bg) {
-
   const dices = container.getElementsByTagName("img")[0];
-
   container.style.background = bg;
-
   setTimeout(() => {
     dices.style.opacity = 0;
     dices.style.left = positionsDicesCol[Math.floor(Math.random() * positionsDicesCol.length)];
@@ -268,7 +395,6 @@ function shuffleDice(container, bg) {
       dices.style.opacity = 1;
     }, 50);
   }, 50);
-
 }
 
 function scrollMeTo(id) {
@@ -357,4 +483,30 @@ async function getGit() {
       </div>
       `;
   }
+}
+
+function RollDice() {
+  // return Math.floor((Math.sin(Date.now() + Math.random()) * 10000) % 6) + 1;
+  let array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  return (array[0] % 6) + 1;
+}
+
+function LotteryAdd(input) {
+  const n = parseInt(input.value) + 1;
+  input.value = n > input.max ? input.max : n;
+}
+function LotteryRem(input) {
+  const n = parseInt(input.value) - 1;
+  input.value = n < input.min ? input.min : n;
+}
+
+function LotteryAddLoop(input) { lotteryInterval = setInterval(() => LotteryAdd(input), 50); }
+function LotteryRemLoop(input) { lotteryInterval = setInterval(() => LotteryRem(input), 50); }
+
+const CHANGE_EVENT = new Event('change');
+function LotteryEnd(input) {
+  input.dispatchEvent(CHANGE_EVENT);
+  clearTimeout(lotteryTimeout);
+  clearInterval(lotteryInterval);
 }
