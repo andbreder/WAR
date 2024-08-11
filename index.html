@@ -132,6 +132,7 @@
     <div id="calc-close" class="md-ripples" style="margin-top: 0.5em; opacity: 0.25; width: 100%;">
       <p style="margin: 2rem 0; text-align: center;">CLICA EM MIM AQUI PRA FECHAR!</p>
     </div>
+    <div style="margin: 2rem;"></div>
   </div>
   <main id="id-main" class="portrait">
     <!-- APRESENTAÇÕES -->
@@ -1190,15 +1191,22 @@
         </p>
         <p class="quote">
           <span class="explanations">Explicações<span style="opacity: 0.5;">, só historinha, se quiser pode pular</span></span>
-          Na Regra Original do WAR, mesmo que você ataque com mais tropas, você necessariamente deve "derrotar" as tropas inimigas no território atacado, tirando um número maior no dado na comparação, <b>ATAQUExDEFESA</b>, o que pode ser muito difícil de acontecer. A mudança aqui é uma inspiração no jogo <b>Yu-Gi-Oh!</b>, permitindo você "atacar o tabuleiro". Na original, com três tropas no ataque e uma na defesa (3x1), a comparação é feita uma a uma, rolando um dado de ataque e um de defesa de cada vez, e o <b>ataque vence somente quando um dado entregar um valor maior que o dado da defesa</b>; Na regra aqui a diferença é justamente a aplicação da chamada: <b class="color-green">VANTAGEM BASEADA NO CONTINGENTE</b>, nesse mesmo caso (3x1), o atacante rola seus três dados e o dado solitário da defesa - dando chance para que a defesa consiga eliminar ao menos uma tropa atacante - mesmo assim, independente de que a defesa vença essa disputa, <b style="background-color: #FF000030;">por
-            atacar com mais tropas, o atacante SEMPRE dominará o território</b>. No caso inverso, <b style="background-color: #FFFF0030;">caso o atacante disponha de menos tropas que o contingente do defensor, o atacante NUNCA vencerá a disputa!</b> O ponto de atenção é que essas disputas acontecem na máxima quantidade de dados da minha versão, por enquanto três, por isso que dá certo! Então, imaginemos o seguinte cenário com mais que três tropas e disputas 3x3 nos dados na seguinte ordem (sendo <span class="color-red">ATAQUE</span>x<span class="color-yellow">DEFESA</span>): <span class="color-red">5</span>x<span class="color-yellow">5</span> > ataque perde 2 > <span class="color-red">3</span>x<span class="color-yellow">4</span> > ataque perde 2 > <span class="color-red">1</span>x<span class="color-yellow">3</span>; terminando assim, "o ataque perdeu". É melhor que o atacante desista e deixe seu território com duas tropas, do que continuar e ter a certeza de perder essa disputa, a
-          tropa restante e futuramente o território, porque o deixou com apenas uma tropa e todos os jogadores aqui são maliciosos e altamente vingativos! 🍍
+          Na Regra Original do WAR, mesmo que você ataque com mais tropas, você precisa <b>derrotar as tropas inimigas no território atacado</b>, tirando um número maior no dado na comparação ATAQUExDEFESA, o que pode ser muito difícil de acontecer.
+          <br>
+          A alteração aqui é inspirada no jogo Yu-Gi-Oh! da Konami, permitindo você "atacar o tabuleiro".
+          <br>
+          Na regra oficial, com três tropas no ataque e uma na defesa (3x1), a comparação é feita uma a uma, rolando um dado de ataque e um de defesa de cada vez, e o ataque vence somente o dado entrega um valor maior que o dado da defesa. Então assim, pode ser um 30x1, se o ataque não vencer no dado, sinto muito, a defesa fica onde está!
+          <br>
+          Na regra aqui, <span class="chat">de nada,</span> a diferença é justamente a aplicação do que chamo de <b class="color-green">VANTAGEM DE ATAQUE BASEADA NO CONTINGENTE</b>, nesse mesmo caso (3x1), o atacante rola os dados, um de ataque e um de defesa mas, independente de que a defesa vença essa disputa, <b style="background-color: #FF000030;">por atacar com mais tropas, o atacante SEMPRE dominará o território</b>🍍
         </p>
         <p class="chat">
           Então, no geral, atacando ou defendendo, <b>quem tem mais tropas ganha!</b> Quem deixa um território exposto vai de Vasco! E quem ataca com menos tropas que a defesa do território atacado ... é uma MULA!
         </p>
+        <p class="color-yellow">
+          O ataque vence somente quando o valor do dado de ataque é MAIOR que o valor do dado de defesa, se for IGUAL ou MENOR a defesa vence!
+        </p>
         <p>
-          O ataque vence quando o valor do dado é maior que o valor do dado da defesa, se for igual ou menor a defesa vence! Então atenção aqui, <span class="comment">matemática básica,</span> nos 36 possíveis resultados a defesa vence em 21.
+          Então, atenção aqui, <span class="comment">matemática básica,</span> nos 36 possíveis resultados a defesa vencerá em 21. <span class="chat">A VANTAGEM que criei é justamente um presente e um incentivo para quem faz o jogo ser jogado ATACANDO! Evitando os gênios retranqueiros, que só defendem!</span>
         </p>
         <p>
           A seguir alguns exemplos de disputas:
@@ -1317,17 +1325,554 @@
           </div>
         </div>
       </div>
-
       <h1 class="title" data-level="2">Calculando</h1>
       <div>
+        <hr />
         <p>
-          Durante a partida vocês vão inúmeras vezes rolar dados e calcular quem ganhou e quem perdeu cada disputa! Sendo que nós só temos três dados de cada categoria, esse processo pode ser bastante demorado. <span class="chat">Mas palma! Palma! Priêmos cânico!</span>
+          Durante a partida vocês vão, inúmeras vezes, rolar dados e calcular quem ganhou e quem perdeu cada disputa! Sendo que nós só temos três dados de cada categoria, esse processo pode ser bastante demorado. <span class="chat"><i>Mas palma! palma! palma! Não priêmos cânico!</i></span>
+        </p>
+        <p>
+          Efetivamente, nas contas a serem feitas, quando a disputa é realizada contra <span class="color-yellow">três ou menos tropas</span>, as tropas extras do adversário garantem a eliminação, sem disputa, das tropas em minoria.
+        </p>
+        <p class="alert text-center">
+          <b style="font-size: 1.3rem;">DISPUTAS E A VANTAGEM DE CONTINGENTE</b>
         </p>
         <p class="comment">
-          Temos uma ferramenta super inovadora, ainda mais disruptiva que a calculadora dos iPhones!
+          A lista abaixo explica a situação de cálculo nas disputas e como é aplicada a vantagem de contingente
+        </p>
+        <ul class="calc-about">
+          <li>
+            Iniciada a disputa, é um <b><span class="color-red">10</span>x<span class="color-yellow">10</span></b>
+          </li>
+          <li style="background-color: #C6FF0030; border: 1px solid #C6FF0088; color:#C6FF00 !important; line-height: 1em; margin-bottom: 0.5em; padding: 0.5em;text-align: justify;">
+            <small>
+              As disputas são definidas <b>na sorte</b> enquanto a quantidade de tropas for MAIOR que a de dados, <span class="chat">ou seje, quatro!</span>
+            </small>
+          </li>
+          <li>
+            Na primeira disputa, por conta dos dados, um <b>3x3</b>, o ataque vence tudo! Resultado: <b><span class="color-red">10</span>x<span class="color-yellow">7</span></b>
+          </li>
+          <li>
+            Outras disputas <b>3x3</b> acontecem e o ataque ainda tem vantagem! <span class="comment">Tá ganhando!</span> Resultado: <b><span class="color-red">5</span>x<span class="color-yellow">3</span></b>
+          </li>
+          <li style="background-color: #C6FF0030; border: 1px solid #C6FF0088; color:#C6FF00 !important; line-height: 1em; margin-bottom: 0.5em; padding: 0.5em; text-align: justify;">
+            <small>
+              A <b class="comment">POBRE</b> <b>DEFESA</b> agora tem o total de tropas igual o de dados <span class="comment">e está condenada!</span> E o <b>ATAQUE</b> tem <b class="color-green">VANTAGEM DE CONTINGENTE</b> <span class="comment">e vai, logicamente, amassar a DEFESA dominando seu território.</span>
+            </small>
+          </li>
+          <p class="chat">A seguir explico todas as possíveis situações que podem acontecer nessa disputa 5x3 com vantagem:</p>
+          <li class="li-gap">
+            <div>Situação 1: <b>UM ATAQUE AVASSALADOR!</b></div>
+            <div style="display: flex; justify-content: center;">
+              <div class="result">
+                <p class="sort-date">
+                  sorteado em 10/08/2024, 16:25
+                </p>
+                <hr />
+                <div class="content atk">
+                  <div class="icon atk">
+                    <span class="material-symbols-sharp">swords</span>
+                  </div>
+                  <div class="summary">
+                    <div class="atk-count">
+                      <b>5</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_right_alt</span>
+                    <div class="survivors">
+                      <b>5</b>
+                    </div>
+                    <span style="opacity: 0.5">x</span>
+                    <div class="survivors">
+                      <b>0</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_left_alt</span>
+                    <div class="def-count">
+                      <b>3</b>
+                    </div>
+                  </div>
+                  <div class="icon def off">
+                    <span class="material-symbols-sharp">security</span>
+                  </div>
+                </div>
+                <hr />
+                <p class="winner">
+                  <b>ATAQUE</b> Venceu!
+                </p>
+                <hr />
+                <div class="events">
+                  <div class="event off">
+                    <small class="win">5</small>
+                    <span class="win">4</span>
+                    <span>x</span>
+                    <span class="">3</span>
+                    <small class="">3</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">5</small>
+                    <span class="win">3</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">2</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">5</small>
+                    <span class="win">6</span>
+                    <span>x</span>
+                    <span class="">1</span>
+                    <small class="">1</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details-events">
+              <div>
+                <div class="event off">
+                  <small class="win">5</small>
+                  <span class="win">4</span>
+                  <span>x</span>
+                  <span class="">3</span>
+                  <small class="">3</small>
+                </div>
+                <div class="detail">
+                  o ataque venceu; a defesa perde uma tropa
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">5</small>
+                  <span class="win">3</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">2</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">5</small>
+                  <span class="win">6</span>
+                  <span>x</span>
+                  <span class="">1</span>
+                  <small class="">1</small>
+                </div>
+                <div class="detail">
+                  o ataque venceu; a última tropa da defesa é eliminada; <b class="color-green">o território é dominado</b>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="li-gap">
+            <div>Situação 2: <b>VOCÊ VEM COMIGO!</b></div>
+            <div style="display: flex; justify-content: center;">
+              <div class="result">
+                <p class="sort-date">
+                  sorteado em 10/08/2024, 21:06
+                </p>
+                <hr>
+                <div class="content atk">
+                  <div class="icon atk ">
+                    <span class="material-symbols-sharp">swords</span>
+                  </div>
+                  <div class="summary">
+                    <div class="atk-count">
+                      <b>5</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_right_alt</span>
+                    <div class="survivors">
+                      <b>4</b>
+                    </div>
+                    <span style="opacity: 0.5">x</span>
+                    <div class="survivors">
+                      <b>0</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_left_alt</span>
+                    <div class="def-count">
+                      <b>3</b>
+                    </div>
+                  </div>
+                  <div class="icon def off">
+                    <span class="material-symbols-sharp">security</span>
+                  </div>
+                </div>
+                <hr>
+                <p class="winner">
+                  <b>ATAQUE</b> Venceu!
+                </p>
+                <hr>
+                <div class="events">
+                  <div class="event off">
+                    <small class="win">5</small>
+                    <span class="win">3</span>
+                    <span>x</span>
+                    <span class="">1</span>
+                    <small class="">3</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">5</small>
+                    <span class="win">1</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">2</small>
+                  </div>
+                  <div class="event off">
+                    <small class="">5</small>
+                    <span class="">1</span>
+                    <span>x</span>
+                    <span class="win">5</span>
+                    <small class="win">1</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">4</small>
+                    <span class="win">6</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">1</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details-events">
+              <div>
+                <div class="event off">
+                  <small class="win">5</small>
+                  <span class="win">3</span>
+                  <span>x</span>
+                  <span class="">1</span>
+                  <small class="">3</small>
+                </div>
+                <div class="detail">
+                  o ataque venceu; a defesa perde uma tropa
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">5</small>
+                  <span class="win">1</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">2</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="">5</small>
+                  <span class="">1</span>
+                  <span>x</span>
+                  <span class="win">5</span>
+                  <small class="win">1</small>
+                </div>
+                <div class="detail">
+                  a defesa venceu; o ataque perde uma tropa
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">4</small>
+                  <span class="win">6</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">1</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡<br><b class="color-green">o território é ocupado</b><span class="comment">, sem choradeira!</span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="li-gap">
+            <div>Situação 3: <b>DEFENDEU COMO NUNCA! ...</b></div>
+            <div style="display: flex; justify-content: center;">
+              <div class="result">
+                <p class="sort-date">
+                  sorteado em 10/08/2024, 21:08
+                </p>
+                <hr>
+                <div class="content atk">
+                  <div class="icon atk ">
+                    <span class="material-symbols-sharp">swords</span>
+                  </div>
+                  <div class="summary">
+                    <div class="atk-count">
+                      <b>5</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_right_alt</span>
+                    <div class="survivors">
+                      <b>4</b>
+                    </div>
+                    <span style="opacity: 0.5">x</span>
+                    <div class="survivors">
+                      <b>0</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_left_alt</span>
+                    <div class="def-count">
+                      <b>3</b>
+                    </div>
+                  </div>
+                  <div class="icon def off">
+                    <span class="material-symbols-sharp">security</span>
+                  </div>
+                </div>
+                <hr>
+                <p class="winner">
+                  <b>ATAQUE</b> Venceu!
+                </p>
+                <hr>
+                <div class="events">
+                  <div class="event off">
+                    <small class="">5</small>
+                    <span class="">5</span>
+                    <span>x</span>
+                    <span class="win">6</span>
+                    <small class="win">3</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">4</small>
+                    <span class="win">4</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">3</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">4</small>
+                    <span class="win">4</span>
+                    <span>x</span>
+                    <span class="">3</span>
+                    <small class="">2</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">4</small>
+                    <span class="win">6</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">1</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details-events">
+              <div>
+                <div class="event off">
+                  <small class="">5</small>
+                  <span class="">5</span>
+                  <span>x</span>
+                  <span class="win">6</span>
+                  <small class="win">3</small>
+                </div>
+                <div class="detail">
+                  a defesa venceu; o ataque perde uma tropa
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">4</small>
+                  <span class="win">4</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">3</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">4</small>
+                  <span class="win">4</span>
+                  <span>x</span>
+                  <span class="">3</span>
+                  <small class="">2</small>
+                </div>
+                <div class="detail">
+                  o ataque venceu; a defesa perde uma tropa
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">4</small>
+                  <span class="win">6</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">1</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡<br><b class="color-green">o território é ocupado</b><span class="comment">, sem choradeira!</span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="li-gap">
+            <div>Situação 4: <b>300 DE ESPARTA!</b></div>
+            <div style="display: flex; justify-content: center;">
+              <div class="result">
+                <p class="sort-date">
+                  sorteado em 10/08/2024, 16:33
+                </p>
+                <hr>
+                <div class="content atk">
+                  <div class="icon atk ">
+                    <span class="material-symbols-sharp">swords</span>
+                  </div>
+                  <div class="summary">
+                    <div class="atk-count">
+                      <b>5</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_right_alt</span>
+                    <div class="survivors">
+                      <b>2</b>
+                    </div>
+                    <span style="opacity: 0.5">x</span>
+                    <div class="survivors">
+                      <b>0</b>
+                    </div>
+                    <span class="material-symbols-sharp">arrow_left_alt</span>
+                    <div class="def-count">
+                      <b>3</b>
+                    </div>
+                  </div>
+                  <div class="icon def off">
+                    <span class="material-symbols-sharp">security</span>
+                  </div>
+                </div>
+                <hr>
+                <p class="winner">
+                  <b>ATAQUE</b> Venceu!
+                </p>
+                <hr>
+                <div class="events">
+                  <div class="event off">
+                    <small class="">5</small>
+                    <span class="">1</span>
+                    <span>x</span>
+                    <span class="win">3</span>
+                    <small class="win">3</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">4</small>
+                    <span class="win">4</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">3</small>
+                  </div>
+                  <div class="event off">
+                    <small class="">4</small>
+                    <span class="">1</span>
+                    <span>x</span>
+                    <span class="win">2</span>
+                    <small class="win">2</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">3</small>
+                    <span class="win">3</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">2</small>
+                  </div>
+                  <div class="event off">
+                    <small class="">3</small>
+                    <span class="">4</span>
+                    <span>x</span>
+                    <span class="win">6</span>
+                    <small class="win">1</small>
+                  </div>
+                  <div class="event off">
+                    <small class="win">2</small>
+                    <span class="win">1</span>
+                    <span>x</span>
+                    <span class="">🤡</span>
+                    <small class="">1</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details-events">
+              <div>
+                <div class="event off">
+                  <small class="">5</small>
+                  <span class="">1</span>
+                  <span>x</span>
+                  <span class="win">3</span>
+                  <small class="win">3</small>
+                </div>
+                <div class="detail">
+                  a defesa venceu; o ataque perde uma tropa<span class="comment">, ahul!</span>
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">4</small>
+                  <span class="win">4</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">3</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="">4</small>
+                  <span class="">1</span>
+                  <span>x</span>
+                  <span class="win">2</span>
+                  <small class="win">2</small>
+                </div>
+                <div class="detail">
+                  a defesa venceu; o ataque perde uma tropa<span class="comment">, ahul!</span>
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">3</small>
+                  <span class="win">3</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">2</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="">3</small>
+                  <span class="">4</span>
+                  <span>x</span>
+                  <span class="win">6</span>
+                  <small class="win">1</small>
+                </div>
+                <div class="detail">
+                  a defesa venceu; o ataque perde uma tropa<span class="comment">, ahul!</span>
+                </div>
+              </div>
+              <div>
+                <div class="event off">
+                  <small class="win">2</small>
+                  <span class="win">1</span>
+                  <span>x</span>
+                  <span class="">🤡</span>
+                  <small class="">1</small>
+                </div>
+                <div class="detail">
+                  o contingente da defesa é menor ou igual a três; sem disputa, <span class="color-red">uma tropa da defesa é <b>removida</b></span> 🤡<br><b class="color-green">o território é ocupado</b><span class="comment">, pode chorar dessa vez!</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <p>
+          Tudo o que você precisava saber sobre <b>CÁLCULO NAS DISPUSTAS</b> e quando é aplicada a <b>VANTAGEM</b> foi explicado acima! <span class="chat">Verifiquei o que foi escrito umas duas vezes só, mas acredito que, lendo devagar e com atenção, até você ... consegue entender!</span>
+        </p>
+        <p class="comment">
+          Beleza, falei que ia agilizar o jogo, mas vocês ainda tem que fazer várias contas!? Calma calabreso!
         </p>
         <p>
-          Clique no botão abaixo para abrir a nossa Calculadora de Disputas <span class="comment">Matemáticamente Duvidosa</span>
+          Clique no botão abaixo para usar a minha Calculadora de Disputas<span class="comment">, ainda matematicamente duvidosa mas</span> que vai substituir os dados e agilizar muuuuuito o jogo!
         </p>
         <div style="padding: 1em;">
           <button type="button" id="dice-calc">
@@ -1337,7 +1882,6 @@
           </button>
         </div>
       </div>
-
     </section>
     <section>
       <h1 class="title">TODO</h1>

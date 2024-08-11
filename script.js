@@ -288,14 +288,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const calcBtnDefRem = document.getElementById("calc-rem-def");
 
   calcBtnAtkAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
+  calcBtnAtkAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
+
   calcBtnAtkRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
+  calcBtnAtkRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
+
   calcBtnDefAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
+  calcBtnDefAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
+
   calcBtnDefRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
+  calcBtnDefRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
 
   calcBtnAtkAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
+
   calcBtnAtkRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
+
   calcBtnDefAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
+
   calcBtnDefRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
+
   calcBtnAtkAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
   calcBtnAtkRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
   calcBtnDefAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
@@ -307,26 +322,39 @@ document.addEventListener("DOMContentLoaded", function () {
     let results = [];
 
     while (troopsATK > 0 && troopsDEF > 0) {
-      results.push([RollDice(), RollDice()]);
-      if (results[results.length - 1][0] > results[results.length - 1][1])
+      results.push({
+        atkQtd: troopsATK,
+        defQtd: troopsDEF,
+        atkDice: RollDice(),
+        defDice: RollDice()
+      });
+      if (results[results.length - 1].atkDice > results[results.length - 1].defDice)
         troopsDEF--;
       else
         troopsATK--;
 
-      if (troopsDEF > 0 && troopsDEF < 4 && troopsDEF < troopsATK) {
+      if (troopsDEF > 0 && troopsDEF <= 3 && troopsDEF < troopsATK) {
+        results.push({
+          atkQtd: troopsATK,
+          defQtd: troopsDEF,
+          atkDice: RollDice(),
+          defDice: "🤡"
+        });
         troopsDEF--;
-        results.push([RollDice(), "🤡"]);
       }
     }
 
     let events = "";
     for (let i = 0; i < results.length; i++) {
-      const atk = results[i][0];
-      const def = results[i][1];
+      const atk = results[i].atkDice;
+      const def = results[i].defDice;
       events +=
-        `<div>
-          <span class="${atk > def ? "win" : ""}">${atk}</span>
+        `<div class="event">
+          <small class="${def == "🤡" || atk > def ? "win" : ""}">${results[i].atkQtd}</small>
+          <span class="${def == "🤡" || atk > def ? "win" : ""}">${atk}</span>
+          <span>x</span>
           <span class="${def != "🤡" && def >= atk ? "win" : ""}">${def}</span>
+          <small class="${def != "🤡" && def >= atk ? "win" : ""}">${results[i].defQtd}</small>
         </div>`
     }
 
@@ -345,6 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="atk-count">
             <b>${calcLuckInputAtk.value}</b>
           </div>
+          <span class="material-symbols-sharp">arrow_right_alt</span>
           <div class="survivors">
             <b>${troopsATK}</b>
           </div>
@@ -352,6 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="survivors">
             <b>${troopsDEF}</b>
           </div>
+          <span class="material-symbols-sharp">arrow_left_alt</span>
           <div class="def-count">
             <b>${calcLuckInputDef.value}</b>
           </div>
@@ -376,7 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
     calcLuckInputDef.dispatchEvent(CHANGE_EVENT);
   });
 
-  // getGit();
+  getGit();
 
 });
 
