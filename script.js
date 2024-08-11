@@ -288,33 +288,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const calcBtnDefRem = document.getElementById("calc-rem-def");
 
   calcBtnAtkAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
-  calcBtnAtkAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
-
   calcBtnAtkRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
-  calcBtnAtkRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
-
   calcBtnDefAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
-  calcBtnDefAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
-
   calcBtnDefRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
-  calcBtnDefRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
-
-  calcBtnAtkAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
-  calcBtnAtkAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
-
-  calcBtnAtkRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
-  calcBtnAtkRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
-
-  calcBtnDefAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
-  calcBtnDefAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
-
-  calcBtnDefRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
-  calcBtnDefRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
-
   calcBtnAtkAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
   calcBtnAtkRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
   calcBtnDefAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
   calcBtnDefRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
+  calcBtnAtkAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnDefAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
+  calcBtnAtkAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnDefAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
+  calcBtnAtkAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
+  calcBtnAtkRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
+  calcBtnDefAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
+  calcBtnDefRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
 
   document.getElementById("sorteadeiro").addEventListener('click', () => {
     let troopsATK = calcLuckInputAtk.value;
@@ -401,9 +393,10 @@ document.addEventListener("DOMContentLoaded", function () {
     calcChallengeRes.scrollTop = calcChallengeRes.scrollHeight;
 
     calcLuckInputAtk.value = calcLuckInputAtk.min;
-    calcLuckInputAtk.dispatchEvent(CHANGE_EVENT);
+    LotteryEnd(calcLuckInputAtk);
     calcLuckInputDef.value = calcLuckInputDef.min;
-    calcLuckInputDef.dispatchEvent(CHANGE_EVENT);
+    LotteryEnd(calcLuckInputDef);
+
   });
 
   getGit();
