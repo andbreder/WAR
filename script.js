@@ -282,31 +282,69 @@ document.addEventListener("DOMContentLoaded", function () {
     if (btnRem.disabled) input.value = input.min;
   }
 
+  //
+  // calcBtnAtkAdd
+  //
   const calcBtnAtkAdd = document.getElementById("calc-add-atk");
-  const calcBtnAtkRem = document.getElementById("calc-rem-atk");
-  const calcBtnDefAdd = document.getElementById("calc-add-def");
-  const calcBtnDefRem = document.getElementById("calc-rem-def");
-
-  calcBtnAtkAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
-  calcBtnAtkRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
-  calcBtnDefAdd.addEventListener('mousedown', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
-  calcBtnDefRem.addEventListener('mousedown', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
+  calcBtnAtkAdd.addEventListener('mousedown', () => {
+    LotteryAdd(calcLuckInputAtk);
+    lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800);
+  });
+  calcBtnAtkAdd.addEventListener('touchstart', () => {
+    LotteryAdd(calcLuckInputAtk);
+    lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800);
+  });
   calcBtnAtkAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
-  calcBtnAtkRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
-  calcBtnDefAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
-  calcBtnDefRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
   calcBtnAtkAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
-  calcBtnAtkRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
-  calcBtnDefAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
-  calcBtnDefRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
   calcBtnAtkAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
+
+  //
+  // calcBtnAtkAdd
+  //
+  const calcBtnAtkRem = document.getElementById("calc-rem-atk");
+  calcBtnAtkRem.addEventListener('mousedown', () => {
+    LotteryRem(calcLuckInputAtk);
+    lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800);
+  });
+  calcBtnAtkRem.addEventListener('touchstart', () => {
+    LotteryRem(calcLuckInputAtk);
+    lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800);
+  });
+  calcBtnAtkRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputAtk));
+  calcBtnAtkRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputAtk));
   calcBtnAtkRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputAtk));
+
+  //
+  // calcBtnAtkAdd
+  //
+  const calcBtnDefAdd = document.getElementById("calc-add-def");
+  calcBtnDefAdd.addEventListener('mousedown', () => {
+    LotteryAdd(calcLuckInputDef);
+    lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800);
+  });
+  calcBtnDefAdd.addEventListener('touchstart', () => {
+    LotteryAdd(calcLuckInputDef);
+    lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800);
+  });
+  calcBtnDefAdd.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefAdd.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
   calcBtnDefAdd.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
+
+  //
+  // calcBtnAtkAdd
+  //
+  const calcBtnDefRem = document.getElementById("calc-rem-def");
+  calcBtnDefRem.addEventListener('mousedown', () => {
+    LotteryRem(calcLuckInputDef);
+    lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800);
+  });
+  calcBtnDefRem.addEventListener('touchstart', () => {
+    LotteryRem(calcLuckInputDef);
+    lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800);
+  });
+  calcBtnDefRem.addEventListener('mouseleave', () => LotteryEnd(calcLuckInputDef));
+  calcBtnDefRem.addEventListener('mouseup', () => LotteryEnd(calcLuckInputDef));
   calcBtnDefRem.addEventListener('touchend', () => LotteryEnd(calcLuckInputDef));
-  calcBtnAtkAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputAtk), 800); });
-  calcBtnAtkRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputAtk); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputAtk), 800); });
-  calcBtnDefAdd.addEventListener('touchstart', () => { LotteryAdd(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryAddLoop(calcLuckInputDef), 800); });
-  calcBtnDefRem.addEventListener('touchstart', () => { LotteryRem(calcLuckInputDef); lotteryTimeout = setTimeout(() => LotteryRemLoop(calcLuckInputDef), 800); });
 
   document.getElementById("sorteadeiro").addEventListener('click', () => {
     let troopsATK = calcLuckInputAtk.value;
@@ -399,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-  getGit();
+  // getGit();
 
 });
 
@@ -524,12 +562,33 @@ function LotteryRem(input) {
   input.value = n < input.min ? input.min : n;
 }
 
-function LotteryAddLoop(input) { lotteryInterval = setInterval(() => LotteryAdd(input), 50); }
-function LotteryRemLoop(input) { lotteryInterval = setInterval(() => LotteryRem(input), 50); }
+function LotteryAddLoop(input) {
+  if (!lotteryInterval)
+    lotteryInterval = setInterval(() => LotteryAdd(input), 50);
+}
+function LotteryRemLoop(input) {
+  if (!lotteryInterval)
+    lotteryInterval = setInterval(() => LotteryRem(input), 50);
+}
 
-const CHANGE_EVENT = new Event('change');
+const EVENT_CHANGE     /**/ = new Event('change');
+const EVENT_MOUSELEAVE /**/ = new Event('mouseleave');
+const EVENT_MOUSEUP    /**/ = new Event('mouseup');
+const EVENT_TOUCHEND   /**/ = new Event('touchend');
+
 function LotteryEnd(input) {
-  input.dispatchEvent(CHANGE_EVENT);
+  input.dispatchEvent(EVENT_CHANGE);
+
+  // calcBtnAtkAdd.dispatchEvent(EVENT_MOUSELEAVE);
+  // calcBtnAtkAdd.dispatchEvent(EVENT_MOUSEUP);
+  // calcBtnAtkAdd.dispatchEvent(EVENT_TOUCHEND);
+
+  // calcBtnAtkRem.dispatchEvent(EVENT_MOUSELEAVE);
+  // calcBtnAtkRem.dispatchEvent(EVENT_MOUSEUP);
+  // calcBtnAtkRem.dispatchEvent(EVENT_TOUCHEND);
+
   clearTimeout(lotteryTimeout);
+  lotteryTimeout = null;
   clearInterval(lotteryInterval);
+  lotteryInterval = null;
 }
