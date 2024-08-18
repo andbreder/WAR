@@ -3227,6 +3227,168 @@ h1.alert {
 
 
 
+  .img-maps-objs {
+    border: 3px solid #C6FF00;
+    position: relative;
+    width: calc(100% - 6px);
+  }
+
+  .maps-on {
+    animation: maps-on-do 8s linear infinite;
+  }
+
+  @keyframes maps-on-do {
+    00% { opacity: 1.0;}
+    10% { opacity: 1.0;}
+    30% { opacity: 0.2;}
+    90% { opacity: 0.2;}
+  }
+
+  .maps-on.aa { animation-delay: 0s; }
+  .maps-on.bb { animation-delay: 2s; }
+  .maps-on.cc { animation-delay: 4s; }
+  .maps-on.dd { animation-delay: 6s; }
+
+  .obja1 { animation-delay: 0s; }
+  .obja2 { animation-delay: 0s; }
+  .objaa { animation-delay: 0s; }
+
+  .objb1 { animation-delay: 2s; }
+  .objb2 { animation-delay: 2s; }
+  .objbb { animation-delay: 2s; }
+
+  .objc1 { animation-delay: 4s; }
+  .objc2 { animation-delay: 4s; }
+  .objcc { animation-delay: 4s; }
+
+  .objd1 { animation-delay: 6s; }
+  .objd2 { animation-delay: 6s; }
+  .objdd { animation-delay: 6s; }
+  
+  .img-maps-objs img.maps {
+    width: 100%;
+  }
+
+  .point {
+    position: absolute;
+    height: 100%;
+  }
+
+  .pr {
+    bottom: -3px;
+    left: -3px;
+  }
+  .pl {
+    bottom: -6px;
+    right: -3px;
+  }
+
+  .obj {
+    align-items: center;
+    border-radius: 100%;
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+    height: 1.25em;
+    position: absolute;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    width: 1.25em;
+  }
+  
+  .obja1 {
+    background-color: var(--color_orange_flat);
+    left: 100px;
+    top: 20px;
+  }
+  .obja2 {
+    background-color: var(--color_pink_flat);
+    left: 165px;
+    top: 42px;
+  }
+  .objaa {
+    background: linear-gradient(to right, var(--color_orange_flat) 25%, var(--color_pink_flat) 75%);
+    height: 6px;
+    left: 121px;
+    position: absolute;
+    top: 42px;
+    transform: rotate(22deg);
+    width: 55px;
+  }
+
+  .objb1 {
+    background-color: var(--color_pink_flat);
+    left: 183px;
+    top: 67px;
+  }
+  .objb2 {
+    background-color: var(--color_yellow_flat);
+    left: 212px;
+    top: 15px;
+  }
+  .objbb {
+    background: linear-gradient(to right, var(--color_pink_flat) 25%, var(--color_yellow_flat) 75%);
+    height: 6px;
+    left: 192px;
+    position: absolute;
+    top: 53px;
+    transform: rotate(-65deg);
+    width: 37px;
+  }
+
+  .objc1 {
+    background-color: var(--color_yellow_flat);
+    left: 238px;
+    top: 30px;
+  }
+  .objc2 {
+    background-color: var(--color_green_flat);
+    left: 343px;
+    top: 60px;
+  }
+  .objcc {
+    background: linear-gradient(to right, var(--color_yellow_flat) 25%, var(--color_green_flat) 75%);
+    height: 6px;
+    left: 260px;
+    position: absolute;
+    top: 57px;
+    transform: rotate(16deg);
+    width: 90px;
+  }
+
+  .objd1 {
+    background-color: var(--color_red_flat);
+    left: 254px;
+    top: 66px;
+  }
+  .objd2 {
+    background-color: var(--color_orange_flat);
+    left: 320px;
+    top: 20px;
+  }
+  .objdd {
+    background: linear-gradient(to right, var(--color_red_flat) 25%, var(--color_orange_flat) 75%);
+    height: 6px;
+    left: 270px;
+    position: absolute;
+    top: 56px;
+    transform: rotate(-36deg);
+    width: 61px;
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   .github {
