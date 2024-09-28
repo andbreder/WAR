@@ -3228,6 +3228,24 @@ h1.alert {
 
 
   .img-maps-objs {
+    --dot-size: 1.25em;
+    --obja1-pX: 22%;
+    --obja1-pY: 10%;
+    --obja2-pX: 35%;
+    --obja2-pY: 40%;
+    --objb1-pX: 40%;
+    --objb1-pY: 60%;
+    --objb2-pX: 46%;
+    --objb2-pY: 10%;
+    --objc1-pX: 52%;
+    --objc1-pY: 26%;
+    --objc2-pX: 76%;
+    --objc2-pY: 60%;
+    --objd1-pX: 54%;
+    --objd1-pY: 64%;
+    --objd2-pX: 70%;
+    --objd2-pY: 20%;
+
     border: 3px solid #C6FF00;
     position: relative;
     width: calc(100% - 6px);
@@ -3289,93 +3307,92 @@ h1.alert {
     display: flex;
     font-size: 1.5em;
     justify-content: center;
-    height: 1.25em;
+    height: var(--dot-size);
     position: absolute;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    width: 1.25em;
+    width: var(--dot-size);
   }
   
   .obja1 {
     background-color: var(--color_orange_flat);
-    left: 100px;
-    top: 20px;
+    left: var(--obja1-pX);
+    top:  var(--obja1-pY);
   }
   .obja2 {
     background-color: var(--color_pink_flat);
-    left: 165px;
-    top: 42px;
+    left: var(--obja2-pX);
+    top:  var(--obja2-pY);
   }
   .objaa {
     background: linear-gradient(to right, var(--color_orange_flat) 25%, var(--color_pink_flat) 75%);
     height: 6px;
-    left: 121px;
     position: absolute;
-    top: 42px;
-    transform: rotate(22deg);
-    width: 55px;
+    transform: rotate(29deg);
+    width: 11%;
+    left: 26%;
+    top: 36%;
   }
 
   .objb1 {
     background-color: var(--color_pink_flat);
-    left: 183px;
-    top: 67px;
+    left: var(--objb1-pX);
+    top:  var(--objb1-pY);
   }
   .objb2 {
     background-color: var(--color_yellow_flat);
-    left: 212px;
-    top: 15px;
+    left: var(--objb2-pX);
+    top:  var(--objb2-pY);
   }
   .objbb {
     background: linear-gradient(to right, var(--color_pink_flat) 25%, var(--color_yellow_flat) 75%);
     height: 6px;
-    left: 192px;
     position: absolute;
-    top: 53px;
-    transform: rotate(-65deg);
-    width: 37px;
+    transform: rotate(-62deg);
+    width: 8%;
+    left: 42%;
+    top: 45%;
   }
 
   .objc1 {
     background-color: var(--color_yellow_flat);
-    left: 238px;
-    top: 30px;
+    left: var(--objc1-pX);
+    top:  var(--objc1-pY);
   }
   .objc2 {
     background-color: var(--color_green_flat);
-    left: 343px;
-    top: 60px;
+    left: var(--objc2-pX);
+    top:  var(--objc2-pY);
   }
   .objcc {
     background: linear-gradient(to right, var(--color_yellow_flat) 25%, var(--color_green_flat) 75%);
     height: 6px;
-    left: 260px;
     position: absolute;
-    top: 57px;
-    transform: rotate(16deg);
-    width: 90px;
+    left: 57%;
+    top: 52%;
+    transform: rotate(19deg);
+    width: 20%;
   }
 
   .objd1 {
     background-color: var(--color_red_flat);
-    left: 254px;
-    top: 66px;
+    left: var(--objd1-pX);
+    top:  var(--objd1-pY);
   }
   .objd2 {
     background-color: var(--color_orange_flat);
-    left: 320px;
-    top: 20px;
+    left: var(--objd2-pX);
+    top:  var(--objd2-pY);
   }
   .objdd {
     background: linear-gradient(to right, var(--color_red_flat) 25%, var(--color_orange_flat) 75%);
     height: 6px;
-    left: 270px;
     position: absolute;
-    top: 56px;
-    transform: rotate(-36deg);
-    width: 61px;
+    left: 55%;
+    top: 55%;
+    transform: rotate(-34deg);
+    width: 18%;
   }
 
-  
 
 
 

@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-  getGit();
+  // getGit();
 
 });
 
